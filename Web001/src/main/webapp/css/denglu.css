@@ -1,0 +1,60 @@
+.labe1 {
+	width: 80px;
+	height: 30px;
+	color: #FFFFFF;
+	text-align: right;
+	display: block;
+	float: left;
+	margin-right: 10px;
+	font-weight: bold;
+}
+
+.shurukuang {
+	width: 150px;
+	height: 20px;
+	padding-left: 10px;
+	border-radius: 2px;
+	border: 0;
+	display: block;
+	margin-left: 20px;
+	
+}
+
+.biaodan {
+	width: 280px;
+	height: 80px;
+	margin: 0 auto;
+}
+button
+{
+	width: 70px;
+	height: 30px;
+	color: #FFFFFF;
+	background: #7ad473;
+	border: 0;
+	margin:20px 45%;
+	border-radius: 5px;
+}
+.xuanz
+{
+	position: relative;
+	left:-28%;
+	margin-top: 10px;
+}
+.jizhumima
+{
+	position: relative;
+	left:-30%;
+	top: -1px;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	color: #a9bdc6;
+	margin-top: 10px;
+}
+.wangjimima
+{
+	font-family: "微软雅黑";
+	font-size: 13px;
+	position: relative;
+	left:6%;
+}

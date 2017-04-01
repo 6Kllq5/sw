@@ -1,0 +1,88 @@
+body {
+	font-family: "微软雅黑";
+}
+
+.beijing {
+	background: url(../img/topbg.gif) repeat-x;
+	width: 100%;
+	z-index: -1;
+	height: auto;
+}
+
+.youce {
+	width: 150px;
+	height: 45px;
+	margin: 20px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 1;
+}
+.top
+{
+	width: 100%;
+	height: 20px;
+}
+.top li
+
+{
+	
+	float: left;
+	width: 30%;
+	height: auto;
+	font-size: 13px;
+	color: #fff;
+	border-right: 1px dotted;
+	text-align: center;
+}
+.bottom{
+	width: 100%;
+	height: 25px;
+	border-radius: 25px;
+	background: #03537d;
+	padding: 2px;
+	margin-top: 5px;
+	
+}
+.admin
+{
+	width: 40px;
+	height: 40px;
+	position: relative;
+	top: -5px;
+	float: left;
+	margin-left: 5px;
+}
+.span
+{
+	float: left;
+	color: #FFFFFF;
+	line-height: 25px;
+	position: relative;
+	left: -5px;
+	font-size: 15px;
+}
+.xiaoxi
+{
+	float: left;
+	color: #FFFFFF;
+	line-height: 25px;
+	position: relative;
+	left: -5px;
+	margin-left: 8px;
+	font-size: 13px;
+}
+.top-p
+{
+	background: red;
+	width:18px;
+	height: 18px;
+	position: relative;
+	top: 5px;
+	text-align: center;
+	line-height: 15px;
+	color: #FFFFFF;
+	font-size: 15px;
+	border-radius: 3px;
+	float: left;
+}

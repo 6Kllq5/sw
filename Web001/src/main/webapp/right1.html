@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/reset.css" />
+<link rel="stylesheet" type="text/css" href="css/right1.css" />
+<link rel='stylesheet' href='fullcalendar-3.0.1/lib/cupertino/jquery-ui.min.css' />
+<link rel="stylesheet" type="text/css" href="js/jquery-confirm-v3.0.1/jquery-confirm-master/dist/jquery-confirm.min.css" />
+<link href='fullcalendar-3.0.1/fullcalendar.css' rel='stylesheet'/>
+<link href='fullcalendar-3.0.1/fullcalendar.print.css' rel='stylesheet' media='print' />
+<script src="js/jquery.js"></script>
+<script src='fullcalendar-3.0.1/lib/moment.min.js'></script>
+<script src="js/jquery-confirm-v3.0.1/jquery-confirm-master/dist/jquery-confirm.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="My97DatePicker/WdatePicker.js" type="text/javascript" charset="utf-8"></script>
+<script src='fullcalendar-3.0.1/fullcalendar.min.js'></script>
+<script>
+	
+	</script>
+<title></title>
+</head>
+
+<body>
+	<div class="right1">
+		<!--上方的提示栏-->
+		<div class="tishilan">
+			<p class="tishilan-p">位置：</p>
+			<ul>
+				<li class="tishilan-li"><a href="">首页</a><img
+					src="img/icon_fenge.png" /></li>
+				<li class="tishilan-li"><a href="#">搜索资料</a><img
+					src="img/icon_fenge.png" /></li>
+				<li class="tishilan-li"><a href="#">搜索资料</a><img
+					src="img/icon_fenge.png" /></li>
+				<li class="tishilan-li"><a href="#">搜索资料</a></li>
+			</ul>
+		</div>
+		<!--下方-->
+		<!--左边-可拖动的块块-->
+		<div class="kuaikuai-left">
+			<!--1-->
+			<div id="fangzhi1" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+				<div class="left-every1" draggable="true" ondragstart="drag(event)"
+					id="drag1">
+					<div class="kuaikuai1">
+						<img src="img/star.png" />
+						<p>小组</p>
+					</div>
+					<div class="kuaikuai2">
+
+						<p>24*7支持</p>
+					</div>
+					<div class="kuaikuai2">
+
+						<p>免费Window空间托管</p>
+					</div>
+					<div class="kuaikuai3">
+
+						<p>图像的数量</p>
+					</div>
+				</div>
+			</div>
+			<!--2-->
+			<div id="fangzhi2" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+				<div class="left-every2" draggable="true" ondragstart="drag(event)"
+					id="drag2">
+					<div class="kuaikuai1">
+						<img src="img/star.png" />
+						<p>社区</p>
+					</div>
+					<div class="kuaikuai2">
+
+						<p>24*7支持</p>
+					</div>
+					<div class="kuaikuai2">
+
+						<p>免费Window空间托管</p>
+					</div>
+					<div class="kuaikuai3">
+
+						<p>图像的数量</p>
+					</div>
+				</div>
+			</div>
+			<!--3-->
+			<div id="fangzhi3" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+				<div class="left-every2" draggable="true" ondragstart="drag(event)"
+					id="drag3">
+					<div class="kuaikuai1">
+						<img src="img/star.png" />
+						<p>个案</p>
+					</div>
+					<div class="kuaikuai2">
+
+						<p>24*7支持</p>
+					</div>
+					<div class="kuaikuai2">
+
+						<p>免费Window空间托管</p>
+					</div>
+					<div class="kuaikuai3">
+
+						<p>图像的数量</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--右边-日期控件-->
+	<div class="kuaikuai-right">
+		<div class="biaoti">
+			<img src="img/tishi.png" />
+			<button>日程事件</button>
+		</div>
+		<div id="calendar"></div>
+	</div>
+	<div
+		style="width: 100%; height: 100%; display: none; background: #C3C3C3; opacity: 0.5;"
+		id="shishi"></div>
+	<div
+		style="width: 500px; height: 800px; background: #FFFFFF; display: none;"
+		id="middle1">
+		<p style="font-family: '微软雅黑'; margin: 15px 140px; font-weight: bold;">修改日程</p>
+		<form method="post" style="margin: 10px 50px;">
+			<label style="font-family: '微软雅黑'; font-size: 13px;">日程标题:</label> <input
+				type="text" style="width: 180px;" id="rcTitle1" />
+		</form>
+		<form method="post" style="margin: 10px 50px;">
+			<label style="font-family: '微软雅黑'; font-size: 13px;">选择星期:</label> <select
+				style="width: 180px;" id="week1">
+				<option value="星期一">星期一</option>
+				<option value="星期二">星期二</option>
+				<option value="星期三">星期三</option>
+				<option value="星期四">星期四</option>
+				<option value="星期五">星期五</option>
+				<option value="星期六">星期六</option>
+				<option value="星期日">星期日</option>
+			</select>
+		</form>
+		<form method="post" style="margin: 10px 50px;">
+			<label style="font-family: '微软雅黑'; font-size: 13px;">起始日期:</label> <input
+				class="Wdate" type="text"
+				onFocus="WdatePicker({isShowClear:false,readOnly:true})"
+				style="width: 180px;" id="startDay1" />
+		</form>
+		<form method="post" style="margin: 10px 50px;">
+			<label style="font-family: '微软雅黑'; font-size: 13px;">结束日期:</label> <input
+				class="Wdate" type="text"
+				onFocus="WdatePicker({isShowClear:false,readOnly:true})"
+				style="width: 180px;" id="endDay1" />
+		</form>
+		<div style="display: none;" id="shijian1">
+
+			<form method="post" style="margin: 10px 50px;">
+				<label style="font-family: '微软雅黑'; font-size: 13px;">开始时间:</label> <input
+					type="text" id="d242"
+					onfocus="WdatePicker({skin:'whyGreen',dateFmt:'H:mm:ss'})"
+					class="Wdate" style="width: 180px;" id="startTime1" />
+			</form>
+			<form method="post" style="margin: 10px 50px;">
+				<label style="font-family: '微软雅黑'; font-size: 13px;">结束时间:</label> <input
+					type="text" id="d242"
+					onfocus="WdatePicker({skin:'whyGreen',dateFmt:'H:mm:ss'})"
+					class="Wdate" style="width: 180px;" id="endTime1" />
+			</form>
+
+		</div>
+		<form method="post" style="margin: 10px 50px;">
+			<input type="checkbox" checked="checked" id="quantian1" /> <label
+				style="font-family: '微软雅黑'; font-size: 13px;">全天</label>
+		</form>
+		<div style="width: 100%; margin: 20px 50px;">
+			<a href="javascript:void(0)"><button
+					style="float: left; background: #c2e1ef; border: 1px solid #0000FF; border-radius: 3px;"
+					id="deleteBtn">删除</button></a> <a href="javascript:void(0)"><button
+					style="float: left; background: #c2e1ef; border: 1px solid #0000FF; border-radius: 3px; margin-left: 80px;"
+					id="okBtn1">确定</button></a> <a href="javascript:void(0)"><button
+					style="float: left; margin-left: 15px; background: #c2e1ef; border: 1px solid #0000FF; border-radius: 3px;"
+					id="cancleBtn1">取消</button></a>
+		</div>
+
+	</div>
+	<script>
+			
+		</script>
+	<script src="js/addEvent.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+.shangchuanxinxi {
+	width: 60%;
+	height: 200px;
+	margin: 30px 20px;
+}
+
+.shangchuanxinxi p {
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.biaobiao {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 10px;
+	border: 1px solid #C3C3C3;
+}
+
+.biaobiao tr {
+	height: 30px;
+}
+
+.biaobiao td {
+	text-align: center;
+	border-right: 1px dotted #C3C3C3;
+}
+
+.bianji a {
+	float: left;
+	height: 30px;
+	width: 32%;
+	line-height: 30px;
+	border-right: 1px dotted #C3C3C3;
+}
+.bianji a :hover
+{
+	color: blue;
+}
+.bianse:hover
+{
+	background: #f0f5f7;
+}
+.queding
+{
+	width: 60%;
+	height: 30px;
+}
+.queding button
+{
+	width: 20%;
+	height: 30px;
+	color: #FFFFFF;
+	background: #3e97c9;
+	border-radius: 5px;
+	position: relative;
+	margin-left: 5%;
+	border: none;
+	left: 99%;
+}

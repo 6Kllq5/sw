@@ -1,0 +1,161 @@
+body {
+	font-family: "微软雅黑";
+	font-size: 12px;
+}
+
+.anlibianxie {
+	width: 100%;
+	height: 100%;
+}
+
+.huanyingyu {
+	color: #C3C3C3;
+	margin: 20px;
+}
+
+.bba {
+	float: left;
+	margin-bottom: 3px;
+	margin-left: 20px;
+}
+
+.bba1 {
+	float: left;
+	margin-bottom: 3px;
+	font-size: 14px;
+	width: 60px;
+	margin-left: 20px;
+	line-height: 23px;
+}
+
+.zuobian {
+	width: 60%;
+	height: 200px;
+	margin-bottom: 20px;
+	margin-left: 20px;
+	border: 1px dotted #C3C3C3;
+}
+
+.zuobian1 {
+	width: 60%;
+	height: 200px;
+	margin-bottom: 20px;
+	margin-left: 20px;
+	border: 1px dotted #C3C3C3;
+}
+
+.zuobian4 {
+	width: 60%;
+	height: 150px;
+	margin-bottom: 20px;
+	margin-left: 20px;
+	border: 1px dotted #C3C3C3;
+}
+
+.zuobian2 {
+	width: 60%;
+	height: 650px;
+	margin-bottom: 20px;
+	margin-left: 20px;
+	border: 1px dotted #C3C3C3;
+}
+
+.xia {
+	float: left;
+	margin-top: 15px;
+}
+
+.shuru {
+	width: 300px;
+	height: 25px;
+	margin-left: 30px;
+	border-radius: 3px;
+	background: #fff;
+	border: 1px solid #38dd67;
+	padding-left: 10px;
+	margin-top: 15px;
+}
+
+.shuru1 {
+	width: 300px;
+	height: 100px;
+	margin-left: 30px;
+	padding-left: 10px;
+	border-radius: 3px;
+	background: #fff;
+	border: 1px solid #38dd67;
+	margin-top: 15px;
+}
+
+.btn-zu {
+	width: 60%;
+	height: 50px;
+}
+
+.btn-zu button {
+	width: 15%;
+	height: 35px;
+	border-radius: 5px;
+	margin-left: 5%;
+	color: #FFFFFF;
+	border: none;
+	background: #3e97c9;
+	float: left;
+}
+
+.youbian {
+	width: 30%;
+	height: 300px;
+	position: absolute;
+	right: 5%;
+	top: 70px;
+	border: 1px dotted #C3C3C3;
+}
+
+.tishi {
+	width: 80px;
+	height: 30px;
+	background: red;
+	color: #FFFFFF;
+	font-weight: bold;
+	position: relative;
+	top: -15px;
+	left: 30px;
+	text-align: center;
+	line-height: 30px;
+}
+
+.row ul {
+	width: 30%;
+	float: left;
+}
+
+.row li {
+	height: 80px;
+	line-height: 80px;
+	text-align: center;
+	color: #FFFFFF;
+	margin: 5px 10px;
+	background: #008800;
+}
+
+.shuoming {
+	display: none;
+}
+
+#row {
+	display: block;
+}
+
+textarea {
+	resize: none;
+}
+
+.bujiean {
+	width: 60%;
+	height: 250px;
+	margin-bottom: 20px;
+	margin-left: 20px;
+	border: 1px dotted #C3C3C3;
+	display: none;
+}

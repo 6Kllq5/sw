@@ -1,0 +1,29 @@
+package sw.service;
+
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import sw.dao.DaoSupport;
+
+@Service("addFenXiResultService")
+public class AddFenXiResultService {
+	@Resource(name="daoSupport")
+	private DaoSupport daoSupport;
+
+	public void setDaoSupport(DaoSupport daoSupport) {
+		this.daoSupport = daoSupport;
+	}
+	
+	public int excuteAddFenXiResult(Map paramMap) throws Exception{
+		int resultInt=0;
+		resultInt=(int) daoSupport.save("sw.insert_fenXiResult", paramMap);
+		return resultInt;
+	}
+	
+	
+	
+	
+}

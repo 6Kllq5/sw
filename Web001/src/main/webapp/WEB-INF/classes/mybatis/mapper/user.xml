@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sw">
+	<!-- 用户登录 -->
+	<select id="select_user" parameterType="java.util.Map" resultType="java.util.Map">
+		select userid,loginname,password,role from user_t
+		<where>
+			<if test=" loginname != null and loginname !='' ">
+					and loginname = #{loginname}
+			</if>
+			<if test=" password != null and password !='' ">
+					and password = #{password}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 查询所有的案例 -->
+	<select id="select_allAnLi" parameterType="java.util.Map" resultType="java.util.Map">
+		select anli_id,
+			anli_no,
+			anli_name,
+			anli_date,
+			anzhu_name,
+			anzhu_gender,
+			anzhu_birthday,
+			anzhu_phoneno,
+			wenti_shengli,
+			wenti_xinli,
+			wenti_shehui,
+			wenti_jiating,
+			wenti_qita,
+			qiuzhu_jigou,
+			zhuanjie_jigou,
+			bujiean_miaoshu,
+			state,
+			fk_userid,
+			fk_username
+		from anli_t
+		<where>
+			<if test=" minstate != null and minstate !='' ">
+					and state &gt;= #{minstate}
+			</if>
+			<if test=" maxstate != null and maxstate !='' ">
+					and state &lt;= #{maxstate}
+			</if>
+			<if test=" fk_userid != null and fk_userid !='' ">
+					and fk_userid = #{fk_userid}
+			</if>
+		</where>
+		ORDER BY anli_date 
+		limit #{turnPage.startNum},#{turnPage.rowInOnePage}
+	</select>
+	<!-- 查询所有的记录数 -->
+	<select id="select_anLiNum" parameterType="java.util.Map" resultType="long">
+		select count(anli_id) from anli_t 
+		<where> 
+			<if test=" fk_userid != null and fk_userid !='' ">
+				and fk_userid = #{fk_userid}
+			</if>
+			<if test=" minstate != null and minstate !='' ">
+					and state &gt;= #{minstate}
+			</if>
+			<if test=" maxstate != null and maxstate !='' ">
+					and state &lt;= #{maxstate}
+			</if>
+		</where>
+	</select>
+	<!-- 查找某一个案例 -->
+	<select id="select_anli" parameterType="java.util.Map" resultType="java.util.Map">
+		select anli_id,
+			anli_no,
+			anli_name,
+			anli_date,
+			anzhu_name,
+			anzhu_gender,
+			anzhu_birthday,
+			anzhu_phoneno,
+			anzhu_guanxi,
+			lianxiren_name,
+			lianxiren_phoneno,
+			wenti_shengli,
+			wenti_xinli,
+			wenti_shehui,
+			wenti_jiating,
+			wenti_qita,
+			qiuzhu_jigou,
+			zhuanjie_jigou,
+			bujiean_miaoshu,
+			state,
+			fk_userid,
+			fk_username
+		from anli_t
+		<where>
+			<if test="fk_userid !=null and fk_userid !=''">
+				and fk_userid=#{fk_userid}	
+			</if>
+			
+			<if test="anli_id!=null and anli_id !=''">
+				and anli_id=#{anli_id}	
+			</if>
+		</where>
+	</select>
+	
+	<!-- 查询对应用户对应案例的所有的资料 -->
+	<select id="select_allZhiLiao" parameterType="java.util.Map" resultType="java.util.Map">
+		select wenjian_id,wenjian_name,wenjian_gengxinshijian,wenjian_lujing,wenjian_jianjie,wenjian_biaozhiwei,fk_userid,fk_anli_id
+		from ziliao_t
+		<where>
+			<if test="fk_userid !=null and fk_userid !=''">
+				and fk_userid=#{fk_userid}
+			</if>
+			<if test="fk_anli_id !=null and fk_anli_id !=''">
+				and fk_anli_id=#{fk_anli_id}
+			</if>
+			<if test="1==1">
+				and wenjian_biaozhiwei=0
+			</if>
+		</where>
+	</select>
+	
+	<!-- 查看对应的案例的诊断计划等 -->
+	<select id="select_pingGu" parameterType="java.util.Map" resultType="java.util.Map">
+		select 
+			pinggu_id,
+			daoda_mubiao,
+			fangshi_dedang,
+			pingding_dengji,
+			gengjing_fuwu,
+			chengxiao_jielun,
+			fk_userid,
+			fk_anli_id
+			from pinggu_t 
+			<where>
+				<if test="fk_userid !=null and fk_userid !=''">
+					and fk_userid=#{fk_userid}
+				</if>
+				<if test="fk_anli_id !=null and fk_anli_id !=''">
+					and fk_anli_id=#{fk_anli_id}
+				</if>
+			</where>
+	</select>
+	
+	<!-- 查询对应案例 计划-->
+	<select id="select_jiHua" resultType="java.util.Map" parameterType="java.util.Map">
+		select 
+			jihua_id,
+			jihua_moxing,
+			jihua_shijian,
+			jihua_neirong,
+			jihua_beizhu,
+			fk_userid,
+			fk_anli_id
+			from jihua_t
+			<where>
+				<if test="fk_userid !=null and fk_userid !=''">
+					and fk_userid=#{fk_userid}
+				</if>
+				<if test="fk_anli_id!=null and fk_anli_id !=''">
+					and fk_anli_id=#{fk_anli_id}
+				</if>
+			</where>
+	</select>
+	
+	<!-- 查询对应案例的 分析诊断结果-->
+	<select id="select_getFenXiResult" parameterType="java.util.Map" resultType="java.util.Map">
+		select zhenduan_id,
+			linchuang_pinggu,
+			diaocha_wenjuan,
+			goutong_moshi,
+			jiating_tupian_lianjie,
+			shengtai_tupian_lianjie,
+			shehui_tupian_lianjie,
+			diaocha_miaoshu,
+			fk_userid,
+			fk_anli_id
+			from zhenduan_t
+			<where>
+				<if test="fk_userid !=null and fk_userid !=''">
+					and fk_userid=#{fk_userid}
+				</if>
+				<if test="fk_anli_id !=null and fk_anli_id !=''">
+					and fk_anli_id=#{fk_anli_id}
+				</if>
+			</where>
+	</select>
+	
+	<!-- 查看对应案例的 处置结果-->
+	<select id="select_shishi" parameterType="java.util.Map" resultType="java.util.Map">
+		select chuzhi_id,
+			zhengduan_shijian,
+			zhixing_miaoshu,
+			beizhu,
+			fk_userid,
+			fk_anli_id
+			from chuzhi_t
+			<where>
+				<if test="fk_userid !=null and fk_userid !=''">
+					and fk_userid=#{fk_userid}
+				</if>
+				<if test="fk_anli_id !=null and fk_anli_id !=''">
+					and fk_anli_id=#{fk_anli_id}
+				</if>
+			</where>
+	</select>
+	
+	
+	
+	
+	
+	
+	<!-- ***************************************************** -->
+	<!-- 查询所有的日程事件,分页查询-->
+	<select id="select_allEvent" parameterType="java.util.Map" resultType="java.util.Map">
+	</select>
+	<!-- 查询所有的记录数 -->
+	<select id="select_eventNum" parameterType="java.util.Map" resultType="long">
+	</select>
+	<!-- **************************************************************** -->	
+	
+	
+	
+	
+	
+	<!-- 加入数据 -->
+	<insert id="insert_ziliao" parameterType="java.util.Map">
+		insert into ziliao_t(
+			wenjian_id,
+			wenjian_name,
+			wenjian_gengxinshijian,
+			wenjian_jianjie,
+			wenjian_lujing,
+			wenjian_biaozhiwei,
+			fk_userid,
+			fk_anli_id
+		)
+		values (
+			#{wenjian_id},
+			#{wenjian_name},
+			#{wenjian_gengxinshijian},
+			#{wenjian_jianjie},
+			#{wenjian_lujing},
+			0,
+			#{fk_userid},
+			#{fk_anli_id}
+		)
+	</insert>
+	
+	<!-- 添加案例 -->
+	<insert id="insert_anli" parameterType="java.util.Map">
+		insert into anli_t(
+			anli_id,
+			anli_no,
+			anli_name,
+			anli_date,
+			anzhu_name,
+			anzhu_gender,
+			anzhu_birthday,
+			anzhu_phoneno,
+			anzhu_guanxi,
+			lianxiren_name,
+			lianxiren_phoneno,
+			wenti_shengli,
+			wenti_xinli,
+			wenti_shehui,
+			wenti_jiating,
+			wenti_qita,
+			qiuzhu_jigou,
+			zhuanjie_jigou,
+			bujiean_miaoshu,
+			state,
+			fk_userid,
+			fk_username
+		)
+		values(
+			#{anli_id},
+			#{anli_no},
+			#{anli_name},
+			#{anli_date},
+			#{anzhu_name},
+			#{anzhu_gender},
+			#{anzhu_birthday},
+			#{anzhu_phoneno},
+			#{anzhu_guanxi},
+			#{lianxiren_name},
+			#{lianxiren_phoneno},
+			#{wenti_shengli},
+			#{wenti_xinli},
+			#{wenti_shehui},
+			#{wenti_jiating},
+			#{wenti_qita},
+			#{qiuzhu_jigou},
+			#{zhuanjie_jigou},
+			#{bujiean_miaoshu},
+			#{state},
+			#{fk_userid},
+			#{fk_username}
+		)
+	</insert>
+	
+	
+	<!-- 分析争端 -->
+	<insert id="insert_Fxzd" parameterType="java.util.Map">
+		insert into zhenduan_t(
+			zhenduan_t,
+			linchuang_pinggu,
+			diaocha_wenjuan,
+			goutong_moshi
+			jiating_tupian_lianjie,
+			shengtai_tupian_lianjie,
+			shehui_tupian_lianjie,
+			diaocha_miaoshu,
+			fk_userid,
+			fk_anli_id
+		)
+		values(
+			#{zhenduan_t},
+			#{linchuang_pinggu},
+			#{diaocha_wenjuan},
+			#{goutong_moshi},
+			#{jiating_tupian_lianjie},
+			#{shengtai_tupian_lianjie},
+			#{shehui_tupian_lianjie},
+			#{diaocha_miaoshu},
+			#{fk_userid},
+			#{fk_anli_id}
+		)
+	</insert>
+	
+	<!-- 日程事件 -->
+	<insert id="insert_event" parameterType="java.util.Map" >
+		insert into shijian_t(
+			shijian_id,
+			shijian_biaoti,
+			shijian_xinqi,
+			shijian_sdate,
+			shijian_edate,
+			shijian_stime,
+			shijian_etime,
+			fk_userid,
+			fk_anli_id
+		)
+		values(
+			#{shijian_id},
+			#{shijian_biaoti},
+			#{shijian_xinqi},
+			#{shijian_sdate},
+			#{shijian_edate},
+			#{shijian_stime},
+			#{shijian_etime},
+			#{fk_userid},
+			#{fk_anli_id}
+		)
+	</insert>
+	
+	
+	<insert id="insert_fenXiResult" parameterType="java.util.Map">
+		insert into zhenduan_t(
+			zhenduan_id,
+			linchuang_pinggu,
+			diaocha_wenjuan,
+			goutong_moshi,
+			jiating_tupian_lianjie,
+			shengtai_tupian_lianjie,
+			shehui_tupian_lianjie,
+			diaocha_miaoshu,
+			fk_userid,
+			fk_anli_id
+		)
+		values(
+			#{zhenduan_id},
+			#{linchuang_pinggu},
+			#{diaocha_wenjuan},
+			#{goutong_moshi},
+			#{jiating_tupian_lianjie},
+			#{shengtai_tupian_lianjie},
+			#{shehui_tupian_lianjie},
+			#{diaocha_miaoshu},
+			#{fk_userid},
+			#{fk_anli_id}
+		)
+	</insert>
+	<!-- 在案例填写阶段，点击下一步之后更新 -->
+	<update id="update_state" parameterType="java.util.Map">
+		UPDATE anli_t SET state = #{state} 
+		<where>
+			<if test="fk_userid !=null and fk_userid !=''">
+				and fk_userid = #{fk_userid}
+			</if>
+			<if test="anli_id !=null and anli_id !='' ">
+				and anli_id=#{anli_id}
+			</if>
+			
+		</where>
+	</update>
+	<insert id="insert_jihua_save" parameterType="java.util.Map">
+		insert into jihua_t(
+			jihua_id,
+			jihua_moxing,
+			jihua_shijian,
+			jihua_neirong,
+			jihua_beizhu,
+			fk_userid,
+			fk_anli_id
+			) 
+		values(
+			#{jihua_id},
+			#{jihua_moxing},
+			#{jihua_shijian},
+			#{jihua_neirong},
+			#{jihua_beizhu},
+			#{fk_userid},
+			#{fk_anli_id})
+	</insert>
+	
+	
+	<insert id="insert_shishi" parameterType="java.util.Map">
+		insert into chuzhi_t(
+			chuzhi_id,
+			zhengduan_shijian,
+			zhixing_miaoshu,
+			beizhu,
+			fk_userid,
+			fk_anli_id
+		) values(
+			#{chuzhi_id},
+			#{zhengduan_shijian},
+			#{zhixing_miaoshu},
+			#{beizhu},
+			#{fk_userid},
+			#{fk_anli_id}
+		)
+	</insert>
+	
+	<insert id="insert_pinggu" parameterType="java.util.Map">
+		insert into pinggu_t(
+			pinggu_id,
+			daoda_mubiao,
+			fangshi_dedang,
+			pingding_dengji,
+			gengjing_fuwu,
+			chengxiao_jielun,
+			fk_userid,
+			fk_anli_id
+		) values(
+			#{pinggu_id},
+			#{daoda_mubiao},
+			#{fangshi_dedang},
+			#{pingding_dengji},
+			#{gengjing_fuwu},
+			#{chengxiao_jielun},
+			#{fk_userid},
+			#{fk_anli_id}
+		)
+	</insert>
+	<!-- 每一步保存之后对案例的步骤进行保存 -->
+	<update id="update_anLiState" parameterType="java.util.Map">
+		UPDATE anli_t SET state = #{state} 
+		<where>
+			<if test="fk_userid !=null and fk_userid !=''">
+				and fk_userid = #{fk_userid}
+			</if>
+			<if test="anli_id !=null and anli_id !='' ">
+				and anli_id=#{anli_id}
+			</if>
+		</where>
+	</update>
+	
+	<!-- 更改anli -->
+	<update id="update_anLi" parameterType="java.util.Map">
+		update anli_t set 
+			anli_no = #{anli_no},
+			anli_name = #{anli_name},
+			anli_date = #{anli_date},
+			anzhu_name = #{anzhu_name},
+			anzhu_gender = #{anzhu_gender},
+			anzhu_birthday = #{anzhu_birthday},
+			anzhu_phoneno = #{anzhu_phoneno},
+			wenti_shengli = #{wenti_shengli},
+			wenti_xinli = #{wenti_xinli},
+			wenti_shehui = #{wenti_shehui},
+			wenti_jiating = #{wenti_jiating},
+			wenti_qita = #{wenti_qita},
+			qiuzhu_jigou = #{qiuzhu_jigou},
+			zhuanjie_jigou = #{zhuanjie_jigou},
+			bujiean_miaoshu = #{bujiean_miaoshu},
+			state = #{state}
+		<where>
+			<if test="anli_id != null and anli_id !='' ">
+				and anli_id = #{anli_id}
+			</if>
+		</where>
+	</update>
+	<update id="update_fenXi">
+		update zhenduan_t set
+			linchuang_pinggu=#{linchuang_pinggu},
+			diaocha_wenjuan=#{diaocha_wenjuan},
+			goutong_moshi=#{goutong_moshi},
+			jiating_tupian_lianjie=#{jiating_tupian_lianjie},
+			shengtai_tupian_lianjie=#{shengtai_tupian_lianjie},
+			shehui_tupian_lianjie=#{shehui_tupian_lianjie},
+			diaocha_miaoshu=#{diaocha_miaoshu}
+		<where>
+			<if test="fk_userid !=null and fk_userid !=''">
+				and fk_userid = #{fk_userid}
+			</if>
+			<if test="fk_anli_id !=null and fk_anli_id !='' ">
+				and fk_anli_id=#{fk_anli_id}
+			</if>
+		</where>
+	</update>
+	
+	<update id="update_jiHua" parameterType="java.util.Map">
+		update jihua_t set
+		jihua_moxing=#{jihua_moxing},
+		jihua_shijian=#{jihua_shijian},
+		jihua_neirong=#{jihua_neirong},
+		jihua_beizhu=#{jihua_beizhu}
+		<where>
+			<if test="fk_userid !=null and fk_userid !=''">
+				and fk_userid = #{fk_userid}
+			</if>
+			<if test="fk_anli_id !=null and fk_anli_id !='' ">
+				and fk_anli_id=#{fk_anli_id}
+			</if>
+		</where>
+	</update>
+	
+	<update id="update_shishi" parameterType="java.util.Map">
+		update chuzhi_t set
+			zhengduan_shijian=#{zhengduan_shijian},
+			zhixing_miaoshu=#{zhixing_miaoshu},
+			beizhu=#{beizhu}
+			<where>
+				<if test="fk_userid !=null and fk_userid !=''">
+					and fk_userid = #{fk_userid}
+				</if>
+				<if test="fk_anli_id !=null and fk_anli_id !='' ">
+					and fk_anli_id=#{fk_anli_id}
+				</if>
+			</where>
+	</update>
+	
+	<update id="update_pingGu" parameterType="java.util.Map">
+		update pinggu_t set 
+			daoda_mubiao=#{daoda_mubiao},
+			fangshi_dedang=#{fangshi_dedang},
+			pingding_dengji=#{pingding_dengji},
+			gengjing_fuwu=#{gengjing_fuwu},
+			chengxiao_jielun=#{chengxiao_jielun}
+			<where>
+				<if test="fk_userid !=null and fk_userid !=''">
+					and fk_userid = #{fk_userid}
+				</if>
+				<if test="fk_anli_id !=null and fk_anli_id !='' ">
+					and fk_anli_id=#{fk_anli_id}
+				</if>
+			</where>
+	</update>
+	<!-- 删除某一个案例 这是一个假删除，将state 变为0-->
+	<delete id="delete_anli" parameterType="java.util.Map">
+		update anli_t set state=0 
+		<where>
+			<if test="fk_userid !=null and fk_userid !=''">
+					and fk_userid = #{fk_userid}
+			</if>
+			<if test="anli_id !=null and anli_id !='' ">
+				and anli_id=#{anli_id}
+			</if>
+		</where>
+	</delete>
+	
+	<!-- 家删除文件 -->
+	<update id="update_file" parameterType="java.util.Map">
+		update ziliao_t set wenjian_biaozhiwei=1
+		<where>
+			<if test="fk_userid !=null and fk_userid !=''">
+					and fk_userid = #{fk_userid}
+			</if>
+			<if test="fk_anli_id !=null and fk_anli_id !='' ">
+				and fk_anli_id=#{fk_anli_id}
+			</if>
+			<if test="wenjian_id !=null and wenjian_id !='' ">
+				and wenjian_id=#{wenjian_id}
+			</if>
+		</where>
+	</update>
+	
+</mapper>

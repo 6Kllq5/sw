@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/anlibianxie.css" />
+		<script src="js/liebiao.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.js"></script>
+		<script src="js/cookie.js"></script>
+		<title></title>
+	</head>
+	<body>
+		<div class="anlibianxie">
+			<p class="huanyingyu">Hi,<b style="color: red;" id="one_user"></b>,欢迎进行案例填写</p>
+			<div>
+				<p class="bba">个案
+					<p style="color: red;">*</p>
+				</p>
+			</div>
+			<!--个案-->
+			<br>
+			<div class="zuobian">
+				<!--1-->
+				<div style="margin: 10px 0 10px -10px; ">
+
+					<div class="xia">
+						<p class="bba1">编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号
+							<p style="color: red;float: left;line-height: 23px;">*</p>
+						</p>
+					</div>
+					<input type="text" style="float: left;" class="shuru" id="one_anli_no"/>
+				</div>
+				<!--1-->
+				<div style="margin: 20px 0 10px -10px; clear: both;">
+
+					<div class="xia">
+						<p class="bba1">个案标题
+							<p style="color: red;float: left;line-height: 23px;">*</p>
+						</p>
+					</div>
+					<input type="text" style="float: left;" class="shuru" id="one_anli_name"/>
+				</div>
+				
+				<!--1-->
+				<div style="margin: 30px 0 10px -10px; clear: both;">
+					<div class="xia">
+						<p class="bba1">日&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;期
+							<p style="color: red;float: left;line-height: 23px;">*</p>
+						</p>
+					</div>
+					<input type="text" style="float: left;" disabled="disabled" class="shuru" id="one_anli_date"/>
+				</div>
+				<!--end-->
+				<!--1-->
+				<div style="margin: 30px 0 10px -10px; clear: both;">
+
+					<div class="xia">
+						<p class="bba1">工&nbsp; 作&nbsp;者
+							<p style="color: red;float: left;line-height: 23px;">*</p>
+						</p>
+					</div>
+					<input type="text" style="float: left;" disabled="disabled" class="shuru"  id="one_anli_user"/>
+				</div>
+				<!--end-->
+			</div>
+			<div>
+				<p class="bba">案主
+					<p style="color: red;">*</p>
+				</p>
+			</div>
+			<!--案主-->
+			<br>
+			<div class="zuobian1">
+				<!--1-->
+				<div style="margin: 10px 0 10px -10px; ">
+					<div class="xia">
+						<p class="bba1">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名
+							<p style="color: red;float: left;line-height: 23px;">*</p>
+						</p>
+					</div>
+					<input type="text" style="float: left;" class="shuru" id="one_anzhu_name"/>
+				</div>
+				<!--1-->
+				<div style="margin: 30px 0 10px -10px; clear: both;">
+
+					<div class="xia">
+						<p class="bba1">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别
+							<p style="color: red;float: left;line-height: 23px;">*</p>
+						</p>
+					</div>
+					<input type="text" style="float: left;" class="shuru" id="one_anzhu_gender"/>
+				</div>
+				<!--end-->
+				<!--1-->
+				<div style="margin: 30px 0 10px -10px; clear: both;">
+
+					<div class="xia">
+						<p class="bba1">出生日期
+							<p style="color: red;float: left;line-height: 23px;">*</p>
+						</p>
+					</div>
+					<input type="text" style="float: left;" class="shuru" id="one_anzhu_birthday"/>
+				</div>
+				<!--end-->
+				<!--1-->
+				<div style="margin: 30px 0 10px -10px; clear: both;">
+
+					<div class="xia">
+						<p class="bba1">电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话
+							<p style="color: red;float: left;line-height: 23px;">*</p>
+						</p>
+					</div>
+					<input type="text" style="float: left;" class="shuru" id="one_anzhu_phoneno"/>
+				</div>
+				<!--end-->
+			</div>
+				<p class="bba">联系人
+					<p style="color: red;">*</p>
+				</p>
+			</div>
+			<!--联系人-->
+			<br>
+			<div class="zuobian4">
+				<!--1-->
+				<div style="margin: 10px 0 10px -10px; ">
+					<div class="xia">
+						<p class="bba1">案主关系
+							<p style="color: red;float: left;line-height: 23px;">*</p>
+						</p>
+					</div>
+					<input type="text" style="float: left;" class="shuru" id="one_anzhu_guanxi"/>
+				</div>
+				<!--1-->
+				<div style="margin: 30px 0 10px -10px; clear: both;">
+
+					<div class="xia">
+						<p class="bba1">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名
+							<p style="color: red;float: left;line-height: 23px;">*</p>
+						</p>
+					</div>
+					<input type="text" style="float: left;" class="shuru" id="one_lianxiren_name"/>
+				</div>
+				<!--end-->
+				
+				<!--1-->
+				<div style="margin: 30px 0 10px -10px; clear: both;">
+
+					<div class="xia">
+						<p class="bba1">电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话
+							<p style="color: red;float: left;line-height: 23px;">*</p>
+						</p>
+					</div>
+					<input type="text" style="float: left;" class="shuru" id="one_lianxiren_phoneno"/>
+				</div>
+				<!--end-->
+			</div>
+			<p class="bba">案主问题概述
+				<p style="color: red;">*</p>
+			</p>
+			<!--案主问题概述-->
+			<br>
+			<div class="zuobian2">
+				<!--1-->
+				<div style="margin: 10px 0 10px -10px; ">
+					<div class="xia">
+						<p class="bba1">生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;理
+							<p style="color: red;float: left;line-height: 23px;">*</p>
+						</p>
+					</div>
+					<textarea style="float: left;" class="shuru1" id="one_wenti_shengli"></textarea>
+				</div>
+
+				<!--1-->
+				<div style="margin: 30px 0 10px -10px; clear: both;">
+					<div class="xia">
+						<p class="bba1">心&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;理
+							<p style="color: red;float: left;line-height: 23px;">*</p>
+						</p>
+					</div>
+					<textarea style="float: left;" class="shuru1" id="one_wenti_xinli"></textarea>
+				</div>
+				<!--end-->
+				<!--1-->
+				<div style="margin: 30px 0 10px -10px; clear: both;">
+					<div class="xia">
+						<p class="bba1">社会环境
+							<p style="color: red;float: left;line-height: 23px;">*</p>
+						</p>
+					</div>
+					<textarea style="float: left;" class="shuru1" id="one_wenti_shehui"></textarea>
+				</div>
+				<!--end-->
+				<!--1-->
+				<div style="margin: 30px 0 10px -10px; clear: both;">
+					<div class="xia">
+						<p class="bba1">家庭环境
+							<p style="color: red;float: left;line-height: 23px;">*</p>
+						</p>
+					</div>
+					<textarea style="float: left;" class="shuru1" id="one_wenti_jiating"></textarea>
+				</div>
+				<!--end-->
+				<!--1-->
+				<div style="margin: 30px 0 10px -10px; clear: both;">
+					<div class="xia">
+						<p class="bba1">其&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;他
+							<p style="color: red;float: left;line-height: 23px;">*</p>
+						</p>
+					</div>
+					<textarea style="float: left;" class="shuru1" id="one_wenti_qita"></textarea>
+				</div>
+				<!--end-->
+			</div>
+			<!--
+            	作者：2292281407@qq.com
+            	时间：2016-12-06
+            	描述：点击不结案后出现一堆的文本框
+            -->
+            <div id="bja" style="display: none;">
+	            <p class="bba" >不结案处理描述
+					<p style="color: red;">*</p>
+				</p>
+			</div>
+			<div class="bujiean">
+		    	<input type="checkbox" name="chooseFs" style="margin-left: -70px;" value="求助其他机构" id="qiuzhu"/><label for="qiuzhu">求助其他机构</label>
+		    	<input type="text" id="one_qiuzhu_jigou"  placeholder="请输入机构名称" disabled="disabled" style="border:1px solid lightskyblue;margin-left: 5px;margin-top: 20px;height: 20px;width: 40%">
+		    	<br><br>
+		    	<input type="checkbox" id="one_zhuanjie_jigou" name="chooseFs" style="margin-left: 12px;" value="转介" id="zhuanjie" />
+		    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    	<label for="zhuanjie">转介</label>
+		    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    	<input type="text" placeholder="请输入转介机构名称" id="one_zhuanjie_jigou" disabled="disabled" style="border:1px solid lightskyblue;margin-left: 5px;height: 20px;width: 40%">
+				<textarea id="one_bujiean_miaoshu" style="width: 98%;margin-top: 10px;margin-left: 1%;height: 60%;" placeholder="请在此处添加相关的描述"></textarea>
+			</div>
+			<div class="btn-zu">
+				<button style="margin-left: 40%;" id="bja_btn">不接案</button>
+				<button id="save_btn">保存</button>
+				<button id="saveAndStep_btn">接案</button>
+			</div>
+		<!--右边提示部分-->
+		<div class="youbian">
+			<p class="tishi">!!提示</p>
+			<div class="row" id="row">
+				<ul style="margin-left: 5%;">
+					<li>SOLER</li>
+					<li>鼓励</li>
+					<li>转移话题</li>
+				</ul>
+				<ul>
+					<li onclick="tiaozhuan()">倾听</li>
+					<li>询问</li>
+					<li>关系技巧</li>
+				</ul>
+				<ul>
+					<li>澄清</li>
+					<li>自我表达</li>
+					<li>环境设置</li>
+				</ul>
+			</div>
+			<div class="shuoming" id="qingting">
+				<p>
+					倾听 <br/>（1）接收信息 <br/>•倾听话语信息，分辨叙述中的经验、行为和情感 •观察身体语言信息 <br/>（2）加工信息 <br/>•解读案主的生活、行动及与其问题相关内容 <br/>（3）传递信息 •在求助者反复强调的信息中归纳出主题并聚焦于此。
+				</p>
+				<button style="background: #3e97c9;position: absolute;right: 5%;top: 250px;border: none;color: #FFFFFF;" onclick="fanhui()">返回</button>
+			</div>
+		</div>
+		<!-- 隐含域 -->
+		<form style="display: none;" id="paramForm">
+			<input name="anli_id" id="anli_id"><!-- bu -->
+			<input name="anli_no" id="anli_no"/>
+			<input name="anli_name" id="anli_name">
+			<input name="anli_date" id="anli_date"/>
+			<input name="anzhu_name" id="anzhu_name">
+			<input name="anzhu_gender" id="anzhu_gender">
+			<input name="anzhu_birthday" id="anzhu_birthday">
+			<input name="anzhu_phoneno" id="anzhu_phoneno">
+			<input name="anzhu_guanxi" id="anzhu_guanxi">
+			<input name="lianxiren_name" id="lianxiren_name">
+			<input name="lianxiren_phoneno" id="lianxiren_phoneno"/>
+			<input name="wenti_shengli" id="wenti_shengli"> 
+			<input name="wenti_xinli" id="wenti_xinli">
+			<input name="wenti_shehui" id="wenti_shehui"/>
+			<input name="wenti_jiating" id="wenti_jiating">
+			<input name="wenti_qita" id="wenti_qita"/>
+			<input name="qiuzhu_jigou" id="qiuzhu_jigou"/> 
+			<input name="zhuanjie_jigou" id="zhuanjie_jigou"/> 
+			<input name="bujiean_miaoshu" id="bujiean_miaoshu"/>
+			<input name="state" id="state"/><!-- bu -->
+			<input name="fk_userid" id="fk_userid"/><!-- bu -->
+			<input name="fk_username" id="fk_username"/><!-- bu -->
+			<input name="method" id="method" value="add"/><!-- bu -->
+		</form>
+	</body>
+	<script src="js/anlibianxie.js" type="text/javascript"></script>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/zhidingjihua.css" />
+		<link rel="stylesheet" type="text/css" href="css/anlibianxie.css" />
+
+		<link rel="stylesheet" href="kindeditor-v4.1.7/kindeditor-4.1.7/themes/default/default.css" />
+		<link rel="stylesheet" href="kindeditor-v4.1.7/kindeditor-4.1.7/plugins/code/prettify.css" />
+		<script charset="utf-8" src="kindeditor-v4.1.7/kindeditor-4.1.7/kindeditor.js"></script>
+		<script charset="utf-8" src="My97DatePicker/lang/zh-cn.js"></script>
+		<script charset="utf-8" src="kindeditor-v4.1.7/kindeditor-4.1.7/plugins/code/prettify.js"></script>
+		<title>制定计划</title>
+	</head>
+	<body>
+		<div class="zhidingjihua">
+			<p class="huanyingyu">Hi,<b style="color: red;">admin</b>!</p>
+			<!--1-->
+			<div style="margin: 0 0 10px 0; ">
+
+				<div class="xia">
+					<p class="bba1">诊断时间
+						<p style="color: red;float: left;line-height: 23px;">*</p>
+					</p>
+				</div>
+				<input type="text" style="float: left;" class="shuru" />
+			</div>
+
+			<div class="xia" style="clear: both;">
+				<p class="bba1">执行情况描述
+					<p style="color: red;float: left;line-height: 23px;">*</p>
+				</p>
+			</div>
+			<!--kindEdit-->
+			<form name="example" method="post" style="margin-top: 20px;">
+				<textarea name="content1" cols="100" rows="8" style="width:97%;height:250px;resize:none;position: relative;top: 15px;"></textarea>
+
+			</form>
+			<div class="xia" style="clear: both;">
+				<p class="bba1">备注
+					<p style="color: red;float: left;line-height: 23px;">*</p>
+				</p>
+			</div>
+			<div style="clear: both;">
+				<textarea style="width: 97%;height: 200px;border:1px solid #C3C3C3 ;resize:none;"></textarea>
+			</div>
+			<div class="aiya">
+				<button type="button" style="position: relative;right:-2%;margin-bottom: 30px;" id="save">保存</button>
+				<button type="button" style="position: relative;right:-8%;margin-bottom: 30px;" id="saveAndStep">结案评估</button>
+			</div>
+		</div>
+		
+		<!-- 隐含域 -->
+		<form style="display: none">
+			<input name="zhengduan_shijian" id="zhengduan_shijian" style="display: none" >
+			<input name="zhixing_miaoshu" id="zhixing_miaoshu" style="display: none" >
+			<input name="fk_userid" id="fk_userid" style="display: none" >
+			<input name="fk_anli_id" id="fk_anli_id" style="display: none" >
+		</form>
+		<!--右边提示部分-->
+		<div class="youbian">
+			<p class="tishi">!!提示</p>
+		</div>
+		<script type="text/javascript" src="js/shishichuzhi.js"></script>
+	</body>
+</html>

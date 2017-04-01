@@ -1,0 +1,51 @@
+.jieanpinggu {
+	width: 60%;
+	height: 600px;
+	
+	margin-left: 30px;
+}
+
+.zuo {
+	float: left;
+	width: 50%;
+	
+
+}
+
+.you {
+	float: left;
+	width:50%;
+
+	
+}
+.you1 label
+{
+	font-size: 15px;
+	margin: 8px 20px;
+}
+.you1 input
+{
+	
+	margin: 8px 0;
+}
+.you1 form
+{
+	position: relative;
+	top: 20px;
+	left: -8%;
+}
+.you2 label
+{
+	font-size: 12px;
+	margin: 100px 20px;
+}
+.you2 form
+{
+	position: relative;
+	top: 20px;
+	left: -8%;
+}
+textarea
+{
+	resize: none;
+}

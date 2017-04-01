@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/right2.css" />
+		<link rel="stylesheet" type="text/css" href="css/right1.css" />
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/cookie.js"></script>
+		<title>案例列表</title>
+	</head>
+	<body>
+		<div class="right1">
+			<!--上方的提示栏-->
+			<div class="tishilan">
+				<p class="tishilan-p">位置：</p>
+				<ul>
+					<li class="tishilan-li">
+						<a href="javascript:void(0)">个案工作</a>
+					</li>
+				</ul>
+			</div>
+			<!--查询部分,只有role不等于0的情况才可以进行查看-->
+				<div class="chaxun">
+					<form method="post">
+						<label>状态查询:</label>
+						<!-- 转台查询并做参数回显 -->
+						<select id="select_state">
+							<option value="18">全部</option>
+							<option value="16">未结案</option>
+							<option value="77">已结案</option>
+							<option value="88">转介</option>
+						</select>
+					</form>
+					<form method="post">
+						<label>按学号/班级查找:</label>
+						<input type="text" name="bianhao" placeholder="请输入学号/班级" class="tiaojian" />
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<label>姓名:</label>
+						<input type="text" name="loginname" placeholder="请输入案主姓名"  class="tiaojian" />
+					</form>
+					<form method="post">
+						<input type="button" value="查询" class="cx-button"/>
+					</form>
+				</div>
+			<div class="right-nav">
+				<p>案例列表</p>
+			</div>
+				<table class="biaoge">
+					<tr style="background:#f0f5f7 ; border-bottom: 1px solid #C3C3C3;">
+						<th>序号</th>
+						<th>编号</th>
+						<th>标题</th>
+						<th>案主名</th>
+						<th>案件状态</th>
+						<th>发布时间</th>
+						<th>工作者</th>
+						<th>操作</th>
+					</tr>
+				</table>
+				<table id="fenye">
+					<tr>
+						<td><a href="javascript:void(0)" id="next">下一页</a></td>
+						<td><a href="javascript:void(0)" id="back">上一页</a></td>
+						<!--用于显示总页数和当期页  -->
+						<td><p></p></td>
+					</tr>
+				</table>
+			<br><br><br>
+			<!-- 隐含域 -->
+			<form id="paraForm" style="display: none">
+				<input name="method" type="hidden" id="method" value="selectAll"> 
+				<input id="minstate" value="1" name="minstate" type="text"/><!-- 状态查询 -->
+				<input id="maxstate" value="8" name="maxstate" type="text"/><!-- 状态查询 -->
+				<input id="bianhao" name="bianhao" type="text"/> <!-- 学号/班级查找 -->
+				<input id="fk_username" name="fk_username">
+				<input id="offset" name="offset" value="0"/>
+				<input id="rowInOnePage" name="rowInOnePage" value="10"><!-- 默认是每一页显示10条 -->
+			</form>
+		</div>
+		<script type="text/javascript" src="js/right2.js"></script>
+	</body>
+</html>

@@ -1,0 +1,44 @@
+.zhidingjihua
+{
+	width: 50%;
+	height: 500px;
+	margin: 0 50px;
+}
+.aiya button
+{
+	width: 80px;
+	height: 30px;
+	background: #3e97c9;
+	color: #FFFFFF;
+	border: none;
+	border-radius: 5px;
+	margin-left: 10px;
+	
+}
+.aiya
+{
+
+	position: relative;
+	top:30px;
+    left:70%;
+	margin-bottom: 30px;
+}
+.aiya1 button
+{
+	width: 80px;
+	height: 30px;
+	background: #3e97c9;
+	color: #FFFFFF;
+	border: none;
+	border-radius: 5px;
+	margin-left: 10px;
+	
+}
+.aiya1
+{
+
+	position: relative;
+	top:30px;
+    left:70%;
+	margin-bottom: 30px;
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/soujizilia.css" />
+		<link rel="stylesheet" type="text/css" href="css/anlibianxie.css" />
+		<script src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/cookie.js"></script>
+		<script type="text/javascript" src="js/jquery-form.js"></script>
+		<title>收集资料</title>
+		<script type="text/javascript">
+			function xianshi() {
+				document.getElementById("fuc").style.display = "block";
+			}
+			function xiaoshi() {
+				document.getElementById("fuc").style.display = "none";
+			}
+		</script>
+	</head>
+	<body>
+		<p class="huanyingyu">Hi,<b style="color: red;">admin</b>,欢迎进行案例填写</p>
+		<div class="shangchuanxinxi">
+			<p> 用户上传文件列表</p>
+			<table border="0" class="biaobiao" id="wenjian_table">
+				<tr style="background:#f0f5f7 ; border-bottom: 1px solid #C3C3C3;">
+					<th style="width: 10%;">序号</th>
+					<th style="width: 15%;overflow: hidden;">文件名</th>
+					<th style="width: 15%;">更新时间</th>
+					<th style="width: 25%;">上传者</th>
+					<th>操作</th>
+				</tr>
+				<!-- <tr class="bianse">
+					<td style="width: 10%;">1</td>
+					<td style="width: 15%;">111113333</td>
+					<td style="width: 15%;">模型1</td>
+					<td style="width: 25%;">2013-09-09 15:05</td>
+					<td class="bianji">
+						<ul>
+							<a href="#">
+								<li>删除</li>
+							</a>
+							<a href="#">
+								<li>下载</li>
+							</a>
+							<a href="#" style="border: none;">
+								<li onclick="xianshi()">添加简介</li>
+							</a>
+						</ul>
+					</td>
+				</tr> -->
+			</table>
+			<table>
+				<tr>
+					<td>
+						<a href="javascript:void(0)">上一页</a>
+					</td>
+					<td>
+						<a href="javascript:void(0)">下一页</a>
+					</td>
+					<td>1/1</td>
+				</tr>
+			</table>
+			
+			<form enctype="multipart/form-data" id="fileForm">
+				<div class="shangchuanwenjin">
+					<p class="lk-p" style="margin-left: 20px;text-align: left;margin-top: 15px;float: left;font-weight: normal;font-size: 13px;">上传文件
+						<p style="color: red;text-align: left;margin-top: 15px;float: left;font-size: 13px;">*</p>
+					</p>
+					<input type="file" style="margin-top: 10px;margin-left: 10px;" id="file" name="file"/>
+					<!-- 隐含域 -->
+					<input name="fk_userid" id="fk_userid" type="hidden"/><!-- 用户ID -->
+					<input name="fk_anli_id" id="fk_anli_id" type="hidden"/><!-- 案例ID -->
+					<input name="method" id="method" value="add" type="hidden">
+					<input name="state" id="state" type="hidden"> 
+					<input type="hidden" name="wenjian_gengxinshijian" id="wenjian_gengxinshijian" ><!-- 上传时间 -->
+					<input type="hidden" name="wenjian_jianjie" id="wenjian_jianjie">
+				</div>
+			</form>
+			<!--Button-->
+			<div class="queding">
+				<button type="button" id="save_btn">保存</button>
+				<button type="button" id="saveAndStep">分析诊断</button>
+			</div>
+		</div>
+		<!--右边提示部分-->
+		<div class="youbian">
+			<p class="tishi">!!提示</p>
+		</div>
+		<!--添加简介的浮层-->
+		<div style="display: none;" id="fuc">
+			<div style="position: absolute;top: 0;left: 40%;width: 400px;height: 100%;background: #FFFFFF;z-index: 50;">
+				<p style="text-align: center;width: 100%;height: 30px;font-size: 16px;line-height:25px;margin-top: 10px;border-bottom: 1px solid #0099CC;">文件简介</p>
+				<div style="width: 100%;font-size: 15px;padding: 30px 20%;"><span style="color: red;">文件名:</span><span id="file_name">文件名</span></div>
+				<div style="width: 60%;font-size: 15px;padding: 0px 20%;"><span style="color: red;">简&nbsp;&nbsp;&nbsp;介:</span><textarea rows="15" cols="25" style="resize:none;margin-top: 15px;padding: 5px 5px;" id="wjjj"></textarea></div>
+				<button style="margin: 20px 45%;width: 60px;height: 30px;line-height: 22px;color: #FFFFFF;background: #03537D;border-radius: 8px;border: 0;" type="button" id="commit">提交</button>
+			</div>
+			<div style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;background: #000000;opacity: 0.6;">
+			</div>
+		</div>
+		<script type="text/javascript" src="js/soujiziliao.js"></script>
+	</body>
+</html>
