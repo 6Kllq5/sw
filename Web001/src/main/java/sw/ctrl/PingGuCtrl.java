@@ -42,7 +42,6 @@ public class PingGuCtrl implements CtrlFun{
 		return resultMap;
 	}
 	
-	
 	@Override
 	public Map selectOne_C(Map paraMap) {
 		// TODO Auto-generated method stub

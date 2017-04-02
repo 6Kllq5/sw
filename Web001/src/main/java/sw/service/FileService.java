@@ -20,6 +20,8 @@ public class FileService implements TableServiceFun{
 		this.daoSupport = daoSupport;
 	}
 	
+	
+	
 	@Override
 	public Map executSelectOne_S(Map paraMap) {
 		// TODO Auto-generated method stub
@@ -39,6 +41,7 @@ public class FileService implements TableServiceFun{
 		}
 		return resultInt;
 	}
+	
 	
 	@Override
 	public int executAddOne_S(Map paraMap) throws Exception {

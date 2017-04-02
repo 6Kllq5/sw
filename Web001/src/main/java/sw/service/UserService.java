@@ -14,7 +14,6 @@ import sw.dao.DaoSupport;
 public class UserService {
 	@Resource(name="daoSupport")
 	private DaoSupport daoSupport;
-
 	public void setDaoSupport(DaoSupport daoSupport) {
 		this.daoSupport = daoSupport;
 	}
@@ -24,6 +23,7 @@ public class UserService {
 		resultMap=(Map) daoSupport.findForObject("sw.select_user",paraMap);
 		return resultMap;
 	}
+	
 	
 	//注册
 	public Map registe(Map paraMap) throws Exception{

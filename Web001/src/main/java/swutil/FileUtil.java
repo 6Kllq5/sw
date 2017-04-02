@@ -24,12 +24,11 @@ public class FileUtil {
 		try{
 			Calendar now = Calendar.getInstance();
 			String filename = file.getOriginalFilename();// 获取问价名称是传过来的文件名称
-			
 			String webroot = request.getServletContext().getRealPath("/");
 			String userFolder=request.getParameter("fk_userid");//对应上传者的目录
 			String anliFolder=request.getParameter("fk_anli_id");//对应某一个案例的文件存放目录
 			//upload目录
-			File upload=new File(webroot.trim(),"upload");
+			File upload=new File(webroot.trim(),"file");
 			//用户目录
 			File user_upload_path=new File(upload,userFolder.trim());
 			//案例目录

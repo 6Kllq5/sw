@@ -16,7 +16,6 @@ public class DateEventService implements TableServiceFun{
 	@Resource(name="daoSupport")
 	private DaoSupport daoSupport;
 	
-	
 	public void setDaoSupport(DaoSupport daoSupport) {
 		this.daoSupport = daoSupport;
 	}

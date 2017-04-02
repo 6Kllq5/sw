@@ -16,7 +16,6 @@ import sw.service.service_interface.ServiceFun;
 public class PingGuService implements ServiceFun{
 	@Resource(name="daoSupport")
 	private DaoSupport daoSupport;
-	
 	public void setDaoSupport(DaoSupport daoSupport) {
 		this.daoSupport = daoSupport;
 	}

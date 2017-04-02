@@ -27,9 +27,15 @@ public class FenXiCtrl implements CtrlFun{
 		Map resultMap=new HashMap();
 		paraMap=RequestTool.getParameterMap(request);
 		String method=(String) paraMap.get("method");
+		if(method.equals("select")){
+			resultMap=selectOne_C(paraMap);
+		}else if(method.equals("add")){
+			resultMap=addOne_C(paraMap);
+		}else if(method.equals("update")){
+			resultMap=updateOne_C(paraMap);
+		}
 		return resultMap;
 	}
-	
 	@Override
 	public Map selectOne_C(Map paraMap) {
 		// TODO Auto-generated method stub
