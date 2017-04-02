@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +23,53 @@ public class FileUtil {
 	public static String uploadFile(MultipartFile file,HttpServletRequest request){
 		String  resultString =null;
 		try{
-			Calendar now = Calendar.getInstance();
+			String filename=String.valueOf(new Date().getTime());//使用时间作为文件名称保证唯一
+			
+//			String filename = file.getOriginalFilename();// 获取问价名称是传过来的文件名称
+			String webroot = request.getServletContext().getRealPath("/");
+			String userFolder=request.getParameter("fk_userid");//对应上传者的目录
+			String anliFolder=request.getParameter("fk_anli_id");//对应某一个案例的文件存放目录
+			//upload目录
+			File upload=new File(webroot.trim(),"file");
+			//用户目录
+			File user_upload_path=new File(upload,userFolder.trim());
+			//案例目录
+			File anli_upload_path=new File(user_upload_path,anliFolder.trim());
+			//判断目录是否存在不存在则创建
+			if(!upload.exists()){
+				upload.mkdirs();
+			}
+			if(!user_upload_path.exists()){
+				user_upload_path.mkdirs();
+			}
+			if(!anli_upload_path.exists()){
+				anli_upload_path.mkdirs();
+			}
+			
+			File newFile = new File(anli_upload_path, filename);
+			if (newFile.exists()) {
+				newFile.delete();
+			}
+			//移动目录
+			file.transferTo(newFile);
+			
+			//拼接路径
+			resultString=anli_upload_path.getPath()+"\\"+filename;
+		}catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return resultString;
+	}
+	
+	
+	//三张图片
+	public static String uploadImg(MultipartFile file,HttpServletRequest request){
+		String  resultString =null;
+		try{
 			String filename = file.getOriginalFilename();// 获取问价名称是传过来的文件名称
 			String webroot = request.getServletContext().getRealPath("/");
 			String userFolder=request.getParameter("fk_userid");//对应上传者的目录
@@ -61,7 +108,6 @@ public class FileUtil {
 			e.printStackTrace();
 		}
 		return resultString;
-		
 	}
 	
 	//文件下载

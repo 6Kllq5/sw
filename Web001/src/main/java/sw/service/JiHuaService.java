@@ -38,8 +38,10 @@ public class JiHuaService implements ServiceFun{
 	@Override
 	public int executAddOne_S(Map paraMap) throws Exception {
 		int resultInt=0;
+		int updateResultInt=0;
 		// TODO Auto-generated method stub
 		resultInt=(int) daoSupport.save("sw.insert_jihua", paraMap);
+		updateResultInt=(int) daoSupport.update("sw.update_state", paraMap);//添加时修稿对应的案例的state
 		return resultInt;
 	}
 }

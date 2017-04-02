@@ -131,8 +131,6 @@
 		)
 	</insert>
 	
-	
-	
 	<!-- state -->
 	<update id="update_state" parameterType="java.util.Map">
 		UPDATE anli_t SET state = #{state} 
@@ -515,7 +513,7 @@
 	</insert>
 	
 	
-	
+	<!-- fenxi -->
 	<select id="select_getFenXiResult" parameterType="java.util.Map" resultType="java.util.Map">
 		select zhenduan_id,
 			linchuang_pinggu,
