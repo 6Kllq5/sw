@@ -44,9 +44,10 @@ public class FileService implements TableServiceFun{
 	public int executAddOne_S(Map paraMap) throws Exception {
 		// TODO Auto-generated method stub
 		int resultInt=0;
+		int updateResultInt=0;
 		resultInt=(int)daoSupport.save("sw.insert_file", paraMap);
-		/*daoSupport.update("", paraMap);//添加时修稿对应的案例的state
-*/		return resultInt;
+		updateResultInt=(int) daoSupport.update("sw.update_state", paraMap);//添加时修稿对应的案例的state
+		return resultInt;
 	}
 
 	@Override

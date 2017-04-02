@@ -131,6 +131,9 @@
 		)
 	</insert>
 	
+	
+	
+	<!-- state -->
 	<update id="update_state" parameterType="java.util.Map">
 		UPDATE anli_t SET state = #{state} 
 		<where>
@@ -464,9 +467,6 @@
 	</update>
 	
 	
-	
-	
-	
 	<!-- event -->
 	<select id="select_allEvent" parameterType="java.util.Map" resultType="java.util.Map">
 		select shijian_id,
@@ -513,11 +513,6 @@
 			#{fk_anli_id}
 		)
 	</insert>
-	
-	
-	
-	
-	
 	
 	
 	
@@ -606,14 +601,6 @@
 			#{fk_anli_id}
 		)
 	</insert>
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
