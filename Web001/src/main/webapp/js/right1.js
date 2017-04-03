@@ -12,7 +12,6 @@ function initEvent(){
 		selectHelper: true,
 		//单击某一天--页面展示没有操作
 		select: function(start, end) {
-			
 		},
 		eventClick: function(event, jsEvent, view) {
 			if($("input[type='checkbox']").eq(1).is(':checked')) {
@@ -22,9 +21,9 @@ function initEvent(){
 				document.getElementById("shijian1").style.display = "block";
 				document.getElementById("middle1").style.height = "330px";
 			}
+			
 			var startDay=moment(event.start).format('YYYY-MM-DD');
 			var endDay = moment(event.end).format('YYYY-MM-DD');
-			
 			var startTime= moment(event.start).format('HH:mm:ss');
 			var endTime= moment(event.end).format('HH:mm:ss');
 			$('#rcTitle1').val(event.title);
@@ -63,29 +62,30 @@ function initEvent(){
 	            	"method":"selectAll"
 	            },
 	            success: function(result) { // 获取当前月的数据
-            	 	var events = [];
-					for (i = 0;i<result.length;i++){
-						var s_date_str =result[i].shijian_sdate;
-						var e_date_str=result[i].shijian_edate;
+            	 	data=result.data;
+                	var events = [];
+					for (i = 0;i<data.length;i++){
+						var s_date_str =data[i].shijian_sdate;
+						var e_date_str=data[i].shijian_edate;
 						//得到中国时间标准
 						var s_date = eval('new Date(' + s_date_str.replace(/\d+(?=-[^-]+$)/, 
 			            		   function (a) { return parseInt(a, 10) - 1; }).match(/\d+/g) + ')');
 						var e_date = eval('new Date(' + e_date_str.replace(/\d+(?=-[^-]+$)/, 
 			            		   function (a) { return parseInt(a, 10) - 1; }).match(/\d+/g) + ')'); 
 						var uom=s_date;
-						var week = result[i].shijian_xinqi;
+						var week = data[i].shijian_xinqi;
 						var weekArray = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六");
-						var s_time= result[i].shijian_stime.trim();
-						var e_time= result[i].shijian_etime.trim();
+						var s_time= data[i].shijian_stime.trim();
+						var e_time= data[i].shijian_etime.trim();
 						while (uom <= e_date) {
 							var w1 = getWeek(uom.getDay());
-							w1=weekArray[w1];
+							//w1=weekArray[w1];
 							if (w1 == week) {
 								var year = uom.getFullYear();
 								var month = parseInt(uom.getMonth()) + 1;
 								var day = uom.getDate();
 								events.push({
-									title :  result[i].shijian_biaoti,
+									title :  data[i].shijian_biaoti,
 									start : moment(year + "-" + month + "-" + day
 											+ " " + s_time,
 											"YYYY-MM-DD HH:mm:ss"),
@@ -101,7 +101,7 @@ function initEvent(){
 	      });
 		}
 	});
-	$('#calendar').find('.fc-prev-button,.ui-button,.ui-state-default,.ui-corner-left').click(function(){alert($(this).hasClass('fc-button-prev')?'prev':'next')});
+	//$('#calendar').find('.fc-prev-button,.ui-button,.ui-state-default,.ui-corner-left').click(function(){alert($(this).hasClass('fc-button-prev')?'prev':'next')});
 }
 $(document).ready(function(){
 	initEvent();
