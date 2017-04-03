@@ -2,6 +2,7 @@ $("#loginBtn").click(function (){
 	//获取数据
 	var loginname=$(".shurukuang").eq(0).val();
 	var password=$(".shurukuang").eq(1).val();
+	password=hex_md5(password);//使用MD5前台加密
 	if(loginname==null|| password==null ||loginname==''||password==''){
 		return ;
 	}

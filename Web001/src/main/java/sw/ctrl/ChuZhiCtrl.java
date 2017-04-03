@@ -87,7 +87,6 @@ public class ChuZhiCtrl implements CtrlFun{
 		}
 		return resultMap;
 	}
-
 	
 	@Override
 	public Map addOne_C(Map paraMap) {

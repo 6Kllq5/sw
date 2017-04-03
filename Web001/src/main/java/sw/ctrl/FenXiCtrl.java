@@ -50,17 +50,22 @@ public class FenXiCtrl implements CtrlFun{
 		return resultMap;
 	}
 	
-	
-	
-	
 	@Override
 	public Map selectOne_C(Map paraMap) {
 		// TODO Auto-generated method stub
 		Map resultMap=new HashMap();
+		Map tempMap=new  HashMap();
 		try {
-			resultMap=fenXiService.executSelectOne_S(paraMap);
-			
-			
+			tempMap=fenXiService.executSelectOne_S(paraMap);
+			if(tempMap.size()==0){
+				resultMap.put("data", null);
+				resultMap.put("statu", 0);
+				resultMap.put("message", "查询失败");
+			}else{
+				resultMap.put("data", tempMap);
+				resultMap.put("statu", 1);
+				resultMap.put("message", "查询成功");
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

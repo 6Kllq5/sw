@@ -34,8 +34,8 @@ public class DateEventCtrl implements TableCtrlFun{
 		Map resultMap=new HashMap();
 		Map paraMap=new HashMap();
 		paraMap=RequestTool.getParameterMap(request);
-		String method=resultMap.get("method").toString();
-		if(method.equals("select")){
+		String method=paraMap.get("method").toString();
+		if(method.equals("selectAll")){
 			resultMap=selectAll_C(paraMap);
 		}else if(method.equals("add")){
 			String shijian_id=UUIDUtil.getRandom().toString();

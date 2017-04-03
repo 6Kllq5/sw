@@ -35,7 +35,6 @@ import swutil.UUIDUtil;
 public class FileCtrl implements TableCtrlFun{
 	@Resource(name="FileService")
 	private FileService fileService;
-	
 	public void setFileService(FileService fileService) {
 		this.fileService = fileService;
 	}
@@ -66,7 +65,6 @@ public class FileCtrl implements TableCtrlFun{
 		Map paraMap=new HashMap();
 		int resultInt=0;
 		String wenjian_lujing = FileUtil.uploadFile(file, request).replace("\\", ";");
-		
 		/*
 		 * 拼装路径，web根目录/upload
 		 */

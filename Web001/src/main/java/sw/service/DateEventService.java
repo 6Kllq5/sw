@@ -1,5 +1,6 @@
 package sw.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -41,11 +42,13 @@ public class DateEventService implements TableServiceFun{
 		return 0;
 	}
 
-
+	
 	@Override
 	public List executSelectAll_S(Map paraMap) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		List resultList=new ArrayList();
+		resultList=(List) daoSupport.findForList("sw.select_allEvent", paraMap);
+		return resultList;
 	}
 
 

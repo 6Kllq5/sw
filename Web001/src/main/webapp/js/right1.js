@@ -27,7 +27,6 @@ function initEvent(){
 			
 			var startTime= moment(event.start).format('HH:mm:ss');
 			var endTime= moment(event.end).format('HH:mm:ss');
-			
 			$('#rcTitle1').val(event.title);
 			$("#startDay1").val(startDay);
 			$("#endDay1").val(endDay);
@@ -49,11 +48,19 @@ function initEvent(){
 			document.getElementById("middle1").style.display = "block";
 		},
 		events: function(start,end,timezone,callback) {
+			var fk_userid="";
+			if(getCookie("role")==0){
+				fk_userid=getCookie("userid");
+			}else{
+				fk_userid=null;
+			}
 	        $.ajax({
 	        	url:"DateEventCtrl/dateEventCtrl",
 	            dataType: 'json',
+	            type:"post",
 	            data:{
-	            	"fk_userid":"${userMap['userid']}"
+	            	"fk_userid":fk_userid,
+	            	"method":"selectAll"
 	            },
 	            success: function(result) { // 获取当前月的数据
             	 	var events = [];
@@ -67,13 +74,12 @@ function initEvent(){
 			            		   function (a) { return parseInt(a, 10) - 1; }).match(/\d+/g) + ')'); 
 						var uom=s_date;
 						var week = result[i].shijian_xinqi;
-						
 						var weekArray = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六");
-					
 						var s_time= result[i].shijian_stime.trim();
 						var e_time= result[i].shijian_etime.trim();
 						while (uom <= e_date) {
 							var w1 = getWeek(uom.getDay());
+							w1=weekArray[w1];
 							if (w1 == week) {
 								var year = uom.getFullYear();
 								var month = parseInt(uom.getMonth()) + 1;
@@ -97,8 +103,6 @@ function initEvent(){
 	});
 	$('#calendar').find('.fc-prev-button,.ui-button,.ui-state-default,.ui-corner-left').click(function(){alert($(this).hasClass('fc-button-prev')?'prev':'next')});
 }
-
-
 $(document).ready(function(){
 	initEvent();
 });
