@@ -1,6 +1,8 @@
 package swutil;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -12,6 +14,10 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -112,6 +118,8 @@ public class FileUtil {
 		return resultString;
 	}
 	
+	
+	
 	//文件下载
 	public static ResponseEntity<byte[]> download(HttpServletRequest request) throws IOException {    
 		 	String filepath=new String(request.getParameter("filepath").getBytes("iso-8859-1"),"utf-8");
@@ -123,4 +131,6 @@ public class FileUtil {
 	        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);   
 	        return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file),headers, HttpStatus.CREATED);    
 	}    
+
+	
 }

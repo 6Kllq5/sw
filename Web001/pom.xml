@@ -28,7 +28,15 @@
 		    <artifactId>druid</artifactId>
 		    <version>1.0.29</version>
 		</dependency>
-        
+		
+		<!-- 导入poi 操作excel -->
+        <dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi</artifactId>
+		    <version>3.16-beta2</version>
+		</dependency>
+		
+		
         <!-- spring核心包 -->  
         <dependency>  
             <groupId>org.springframework</groupId>  

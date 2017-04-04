@@ -15,6 +15,18 @@
 		</where>
 	</select>
 	
+	<!-- registe -->
+	<insert id="insert_bunchUser" parameterType="java.util.List">
+        insert into user_t (userid, loginname, password, role,bianhao, xueyuan, xi,banji)
+        values
+        <foreach collection="list" item="item" index="index"  separator="," >
+            (#{item.userid},#{item.loginname},#{item.password},#{item.role},#{item.bianhao},#{item.xueyuan},#{item.xi},#{item.banji})
+        </foreach>
+    </insert>
+	
+	
+	
+	
 	<!-- anli -->
 	<select id="select_allAnLi" parameterType="java.util.Map" resultType="java.util.Map">
 		select anli_id,
