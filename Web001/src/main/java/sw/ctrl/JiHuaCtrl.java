@@ -18,7 +18,6 @@ import swutil.UUIDUtil;
 @Controller
 @RequestMapping("JiHuaCtrl")
 public class JiHuaCtrl implements CtrlFun{
-	
 	@Resource(name="JiHuaService")
 	private  JiHuaService jiHuaService;
 	

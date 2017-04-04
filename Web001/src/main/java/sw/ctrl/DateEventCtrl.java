@@ -65,7 +65,23 @@ public class DateEventCtrl implements TableCtrlFun{
 	@Override
 	public Map addOne_C(Map paraMap) {
 		// TODO Auto-generated method stub
-		return null;
+		Map resultMap =new HashMap();
+		int resultInt=0;
+		try {
+			resultInt = dateEventService.executAddOne_S(paraMap);
+			if(resultInt==0){
+				resultMap.put("statu", 0);
+				resultMap.put("message", "添加失败");
+			}else{
+				resultMap.put("statu",1);
+				resultMap.put("message", "添加成功");
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return resultMap;
+		
 	}
 	//查询所有的事件
 	@Override

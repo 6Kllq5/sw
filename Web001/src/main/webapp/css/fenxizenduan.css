@@ -258,6 +258,18 @@
 	
 }
 
+.mark {
+	width: 25px;
+	height: 25px;
+	float: right;
+	position: relative;
+	left: -25px;
+	top: -3px;
+}
+
+.tishixinxi{
+	display:none;
+}
 
 
 

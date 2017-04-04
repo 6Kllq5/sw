@@ -22,6 +22,8 @@ public class PingGuCtrl implements CtrlFun{
 	public void setPingGuService(PingGuService pingGuService) {
 		this.pingGuService = pingGuService;
 	}
+	
+	
 	@RequestMapping(value="pingGuCtrl")
 	@ResponseBody
 	public Map pingGuCtrl(HttpServletRequest request){

@@ -3,7 +3,9 @@ var option={
 	type:"post",
 	async:false,
 	dataType:"json",
-	success:function (result){},
+	success:function (result){
+		
+	},
 	error:function (){
 		window.location.href="error.html";
 	}
@@ -85,7 +87,6 @@ function insertTable(){
 }
 
 
-
 //删除文件
 function deleteWj(wenjian_id){
 	$.ajax({
@@ -107,6 +108,8 @@ function deleteWj(wenjian_id){
 		}
 	});
 }
+
+
 
 //更新事件简介
 function updateJianJie(){

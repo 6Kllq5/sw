@@ -6,16 +6,23 @@
 		<link rel="stylesheet" type="text/css" href="css/reset.css" />
 		<link rel="stylesheet" type="text/css" href="css/zhidingjihua.css" />
 		<link rel="stylesheet" type="text/css" href="css/anlibianxie.css" />
-		<script type="text/javascript" src="js/jquery.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/right1.css" />
 		<link rel="stylesheet" href="kindeditor-v4.1.7/kindeditor-4.1.7/themes/default/default.css" />
 		<link rel="stylesheet" href="kindeditor-v4.1.7/kindeditor-4.1.7/plugins/code/prettify.css" />
+		<link rel="stylesheet" type="text/css" href="css/right1.css" />
+		<link rel='stylesheet' href='fullcalendar-3.0.1/lib/cupertino/jquery-ui.min.css' />
+		<link rel="stylesheet" type="text/css" href="js/jquery-confirm-v3.0.1/jquery-confirm-master/dist/jquery-confirm.min.css" />
+		<link href='fullcalendar-3.0.1/fullcalendar.css' rel='stylesheet' />
+		<link href='fullcalendar-3.0.1/fullcalendar.print.css' rel='stylesheet' media='print' />
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script  src='fullcalendar-3.0.1/lib/moment.min.js'></script>
+		<script src="js/jquery-confirm-v3.0.1/jquery-confirm-master/dist/jquery-confirm.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="My97DatePicker/WdatePicker.js" type="text/javascript" charset="utf-8"></script>
+		<script src='fullcalendar-3.0.1/fullcalendar.min.js'></script>
 		<script charset="utf-8" src="kindeditor-v4.1.7/kindeditor-4.1.7/kindeditor.js"></script>
-		<script charset="utf-8" src="My97DatePicker/lang/zh-cn.js"></script>
-		<script charset="utf-8" src="kindeditor-v4.1.7/kindeditor-4.1.7/plugins/code/prettify.js"></script>
-		<script type="text/javascript" src="js/cookie.js"></script>
+		<script src="js/cookie.js"></script>
 		<title>制定计划</title>
 	</head>
-
 	<body>
 		<div class="zhidingjihua">
 			<p class="huanyingyu">Hi,<b style="color: red;">admin</b>,欢迎进行制定计划</p>
@@ -39,6 +46,7 @@
 			<input type="text" style="float: left;" class="shuru" id="one_jhsj"/>
 
 			<div class="xia" style="clear: both;">
+				<div id="calendar"></div>
 				<p class="bba1">计划内容
 					<p style="color: red;float: left;line-height: 23px;">*</p>
 				</p>
@@ -64,10 +72,139 @@
 		<div class="youbian">
 			<p class="tishi">!!提示</p>
 		</div>
+		
+		<div
+			style="width: 100%; height: 100%; display: none; background: #C3C3C3; opacity: 0.5;"
+			id="shishi">
+		</div>
+		<div
+			style="width: 500px; height: 800px; background: #FFFFFF; display: none;"
+			id="middle">
+			<p style="font-family: '微软雅黑'; margin: 15px 140px; font-weight: bold;">添加日程</p>
+			<form method="post" style="margin: 10px 50px;">
+				<label style="font-family: '微软雅黑'; font-size: 13px;">日程标题:</label> <input
+					type="text" style="width: 180px;" id="rcTitle" />
+			</form>
+			<form method="post" style="margin: 10px 50px;">
+				<label style="font-family: '微软雅黑'; font-size: 13px;">选择星期:</label> <select
+					style="width: 180px;" id="week">
+	
+					<option value="星期一">星期一</option>
+					<option value="星期二">星期二</option>
+					<option value="星期三">星期三</option>
+					<option value="星期四">星期四</option>
+					<option value="星期五">星期五</option>
+					<option value="星期六">星期六</option>
+					<option value="星期日">星期日</option>
+	
+				</select>
+			</form>
+			<form method="post" style="margin: 10px 50px;">
+				<label style="font-family: '微软雅黑'; font-size: 13px;">起始日期:</label> <input
+					class="Wdate" type="text"
+					onFocus="WdatePicker({isShowClear:false,readOnly:true})"
+					style="width: 180px;" id="startDay" />
+			</form>
+			<form method="post" style="margin: 10px 50px;">
+				<label style="font-family: '微软雅黑'; font-size: 13px;">结束日期:</label> <input
+					class="Wdate" type="text"
+					onFocus="WdatePicker({isShowClear:false,readOnly:true})"
+					style="width: 180px;" id="endDay" />
+			</form>
+			<div style="display: none;" id="shijian">
+				<form method="post" style="margin: 10px 50px;">
+					<label style="font-family: '微软雅黑'; font-size: 13px;">开始时间:</label> <input
+						type="text"
+						onfocus="WdatePicker({skin:'whyGreen',dateFmt:'H:mm:ss'})"
+						class="Wdate" style="width: 180px;" id="startTime" />
+				</form>
+				<form method="post" style="margin: 10px 50px;">
+					<label style="font-family: '微软雅黑'; font-size: 13px;">结束时间:</label> <input
+						type="text"
+						onfocus="WdatePicker({skin:'whyGreen',dateFmt:'H:mm:ss'})"
+						class="Wdate" style="width: 180px;" id="endTime" />
+				</form>
+			</div>
+			<form method="post" style="margin: 10px 50px;">
+				<input type="checkbox" checked="checked" id="quantian" /> <label
+					style="font-family: '微软雅黑'; font-size: 13px;">全天</label>
+			</form>
+	
+			<div style="width: 100%; margin: 20px 100px;">
+				<a href="javascript:void(0)"><button
+						style="float: left; background: #c2e1ef; border: 1px solid #0000FF; border-radius: 3px;"
+						id="okButton">确定</button></a> <a href="javascript:void(0)"><button
+						style="float: left; margin-left: 30px; background: #c2e1ef; border: 1px solid #0000FF; border-radius: 3px;"
+						id="cancleButton">取消</button></a>
+			</div>
+		</div>
+		<div
+			style="width: 500px; height: 800px; background: #FFFFFF; display: none;"
+			id="middle1">
+			<p style="font-family: '微软雅黑'; margin: 15px 140px; font-weight: bold;">修改日程</p>
+			<form method="post" style="margin: 10px 50px;">
+				<label style="font-family: '微软雅黑'; font-size: 13px;">日程标题:</label> <input
+					type="text" style="width: 180px;" id="rcTitle1" />
+			</form>
+			<form method="post" style="margin: 10px 50px;">
+				<label style="font-family: '微软雅黑'; font-size: 13px;">选择星期:</label> <select
+					style="width: 180px;" id="week1">
+					<option value="星期一">星期一</option>
+					<option value="星期二">星期二</option>
+					<option value="星期三">星期三</option>
+					<option value="星期四">星期四</option>
+					<option value="星期五">星期五</option>
+					<option value="星期六">星期六</option>
+					<option value="星期日">星期日</option>
+				</select>
+			</form>
+			<form method="post" style="margin: 10px 50px;">
+				<label style="font-family: '微软雅黑'; font-size: 13px;">起始日期:</label> <input
+					class="Wdate" type="text"
+					onFocus="WdatePicker({isShowClear:false,readOnly:true})"
+					style="width: 180px;" id="startDay1" />
+			</form>
+			<form method="post" style="margin: 10px 50px;">
+				<label style="font-family: '微软雅黑'; font-size: 13px;">结束日期:</label> <input
+					class="Wdate" type="text"
+					onFocus="WdatePicker({isShowClear:false,readOnly:true})"
+					style="width: 180px;" id="endDay1" />
+			</form>
+			<div style="display: none;" id="shijian1">
+	
+				<form method="post" style="margin: 10px 50px;">
+					<label style="font-family: '微软雅黑'; font-size: 13px;">开始时间:</label> <input
+						type="text" id="d242"
+						onfocus="WdatePicker({skin:'whyGreen',dateFmt:'H:mm:ss'})"
+						class="Wdate" style="width: 180px;" id="startTime1" />
+				</form>
+				<form method="post" style="margin: 10px 50px;">
+					<label style="font-family: '微软雅黑'; font-size: 13px;">结束时间:</label> <input
+						type="text" id="d242"
+						onfocus="WdatePicker({skin:'whyGreen',dateFmt:'H:mm:ss'})"
+						class="Wdate" style="width: 180px;" id="endTime1" />
+				</form>
+			</div>
+			<form method="post" style="margin: 10px 50px;">
+				<input type="checkbox" checked="checked" id="quantian1" /> <label
+					style="font-family: '微软雅黑'; font-size: 13px;">全天</label>
+			</form>
+			<div style="width: 100%; margin: 20px 50px;">
+				<a href="javascript:void(0)"><button
+						style="float: left; background: #c2e1ef; border: 1px solid #0000FF; border-radius: 3px;"
+						id="deleteBtn">删除</button></a> <a href="javascript:void(0)"><button
+						style="float: left; background: #c2e1ef; border: 1px solid #0000FF; border-radius: 3px; margin-left: 80px;"
+						id="okBtn1">确定</button></a> <a href="javascript:void(0)"><button
+						style="float: left; margin-left: 15px; background: #c2e1ef; border: 1px solid #0000FF; border-radius: 3px;"
+						id="cancleBtn1">取消</button></a>
+			</div>
+		</div>
+		
 		<!-- 隐含域 -->
 		<form style="display: none" id="paraForm">
 			<!-- 除了案例页面以外所有其他页面进行更新所用的查询条件是用userID  anliid 外键 -->
 			<input name="method" id="method" value="add">
+			<input name="jihua_id" id="jihua_id"><!-- 用于更新操作存放数据 -->
 			<input name="jihua_moxing" id="jihua_moxing">
 			<input name="jihua_shijian" id="jihua_shijian">
 			<input name="jihua_neirong" id="jihua_neirong">
@@ -75,6 +212,9 @@
 			<input name="fk_userid" id="fk_userid">
 			<input name="fk_anli_id" id="fk_anli_id">
 		</form>
+		
+		
 		<script type="text/javascript" src="js/zhidingjihua.js"></script>
+		<script type="text/javascript" src="js/addEvent.js"></script>
 	</body>
 </html>

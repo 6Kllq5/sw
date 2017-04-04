@@ -27,8 +27,19 @@ var option={
 $(document).ready(function(){
 	$.ajax({
 		type:"get",
-		url:"",
-		async:true
+		url:"JiHuaCtrl/jiHuaCtrl",
+		data:{
+			"method":"select",
+			"fk_userid":getCookie("userid"),
+			"fk_anli_id":getCookie("anli_id")
+		},
+		async:false,
+		success:function (result){
+			
+		},
+		error:function(){
+			window.location.href="error.html";
+		}
 	})
 });
 

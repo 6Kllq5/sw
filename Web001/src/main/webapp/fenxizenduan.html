@@ -14,6 +14,7 @@
 		<script charset="utf-8" src="My97DatePicker/lang/zh-cn.js"></script>
 		<script charset="utf-8" src="kindeditor-v4.1.7/kindeditor-4.1.7/plugins/code/prettify.js"></script>
 		<script src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/cookie.js"> </script>
 		<title>分析诊断</title>
 	</head>
 	<body>
@@ -29,128 +30,132 @@
 				<div class="rows2">
 					<div class="col1">
 						<form method="post">
-							<input type="checkbox" /><label>心理社会评估模式</label><img src="img/icon_tshi.png" style="width: 25px;height: 25px;float: right;position: relative;left: -25px;top: -3px;"/>
 							<div class="tishixinxi" id="tishiyi">
-								<p>1、心理社会评估模式</p>
-								<p>理论基础：</p>
-								<p>倡导以“人在环境中”的观点来看人的功能，强调个体内在心理、人际与环境等因素的交互影响</p>
-								<p>评估技巧：</p>
-								<p>（1）案主的问题是来自于所承受的压力吗？</p>
-								<p>（2）有其他长期未解决的问题 吗？</p>
-								<p>（3）案主有自我功能上的问题吗？</p>
-								<p>（4）缺乏环境的支持吗？</p>
-								<p>（5）案主拥有多少环境支持以及自我能力的情形？</p>
-							</div>
-							<div class="tishixinxi" id="tishiyi1">
-								<p>2、问题解决模式</p>
-								<p>理论基础：</p>
-								<p>源自自我心理学、角色理论、符号互动理论以及理性问题解决过程，强调个体潜能的成长与机构功能的发挥</p>
-								<p>评估技巧：</p>
-								<p>（1）珀尔曼的4P评估：person、problem、place、process（整合式的问题评估架构）。</p>
-								<p>（2）德利默斯（Doremus）的4R评估：roles、reactions、relationships、resources（就案主的个别状况进行评估）</p>
-								<p>（3）谢弗（Sheafor）等人的4M评估：motivation、meanings、management、monitoring，乃是就机构的功能进行评估</p>
+						<p>1、心理社会评估模式</p>
+						<p>理论基础：</p>
+						<p>倡导以“人在环境中”的观点来看人的功能，强调个体内在心理、人际与环境等因素的交互影响</p>
+						<p>评估技巧：</p>
+						<p>（1）案主的问题是来自于所承受的压力吗？</p>
+						<p>（2）有其他长期未解决的问题 吗？</p>
+						<p>（3）案主有自我功能上的问题吗？</p>
+						<p>（4）缺乏环境的支持吗？</p>
+						<p>（5）案主拥有多少环境支持以及自我能力的情形？</p>
+					</div>
+					<div class="tishixinxi" id="tishiyi1">
+						<p>2、问题解决模式</p>
+						<p>理论基础：</p>
+						<p>源自自我心理学、角色理论、符号互动理论以及理性问题解决过程，强调个体潜能的成长与机构功能的发挥</p>
+						<p>评估技巧：</p>
+						<p>（1）珀尔曼的4P评估：person、problem、place、process（整合式的问题评估架构）。</p>
+						<p>（2）德利默斯（Doremus）的4R评估：roles、reactions、relationships、resources（就案主的个别状况进行评估）</p>
+						<p>（3）谢弗（Sheafor）等人的4M评估：motivation、meanings、management、monitoring，乃是就机构的功能进行评估</p>
 
-							</div>
-							<div class="tishixinxi" id="tishiyi2">
-								<p>3、行为评估模式</p>
-								<p>理论基础：</p>
-								<p>采自行为心理学，认为行为是学习来的</p>
-								<p>评估技巧：</p>
-								<p>有量化测量特点，分9个评估步骤：</p>
-								<p>（1）将问题一一列出；</p>
-								<p>（2）标定主要问题并签订同意接受服务的契约；</p>
-								<p>（3）获得案主的承诺与合作；</p>
-								<p>（4）详述目标行为；</p>
-								<p>（5）设定目标行为的基准线；</p>
-								<p>（6）界定可能控制的条件；</p>
-								<p>（7）评估环境资源；</p>
-								<p>（8）详述行为目标；</p>
-								<p>（9）形成行为修正的计划</p>
-							</div>
-							<div class="tishixinxi" id="tishiyi3">
-								<p>4、任务中心评估模式</p>
-								<p>理论基础：</p>
-								<p>源自不同的理论与技术取向，整合了行为认知、学习理论、家族治疗等理论派别的理论预设与治疗技术。着重于指导性以及协助性的角色，协助案主厘清问题并拟定改变方向，重视治疗关系，并将案主视为是有解决问题能力的人</p>
-								<p>评估技巧：</p>
-								<p>评估目的在于界定所存在的问题，及其所想达到的改善结果，包括：</p>
-								<p>（1）了解案主对于问题的感受及看法；</p>
-								<p>（2）社工借由探索、澄清、界定问题来协助案主厘清其所遭遇的问题</p>
+					</div>
+					<div class="tishixinxi" id="tishiyi2">
+						<p>3、行为评估模式</p>
+						<p>理论基础：</p>
+						<p>采自行为心理学，认为行为是学习来的</p>
+						<p>评估技巧：</p>
+						<p>有量化测量特点，分9个评估步骤：</p>
+						<p>（1）将问题一一列出；</p>
+						<p>（2）标定主要问题并签订同意接受服务的契约；</p>
+						<p>（3）获得案主的承诺与合作；</p>
+						<p>（4）详述目标行为；</p>
+						<p>（5）设定目标行为的基准线；</p>
+						<p>（6）界定可能控制的条件；</p>
+						<p>（7）评估环境资源；</p>
+						<p>（8）详述行为目标；</p>
+						<p>（9）形成行为修正的计划</p>
+					</div>
+					<div class="tishixinxi" id="tishiyi3">
+						<p>4、任务中心评估模式</p>
+						<p>理论基础：</p>
+						<p>源自不同的理论与技术取向，整合了行为认知、学习理论、家族治疗等理论派别的理论预设与治疗技术。着重于指导性以及协助性的角色，协助案主厘清问题并拟定改变方向，重视治疗关系，并将案主视为是有解决问题能力的人</p>
+						<p>评估技巧：</p>
+						<p>评估目的在于界定所存在的问题，及其所想达到的改善结果，包括：</p>
+						<p>（1）了解案主对于问题的感受及看法；</p>
+						<p>（2）社工借由探索、澄清、界定问题来协助案主厘清其所遭遇的问题</p>
 
-							</div>
-							<div class="tishixinxi" id="tishiyi4">
-								<p>5、生活模式的评估系统</p>
-								<p>理论基础：</p>
-								<p>整合了一般系统理论、生态学观点、增权等理论来源，建构了综合性的生态系统观点</p>
-								<p>评估技巧：</p>
-								<p>（1）人格特质；</p>
-								<p>（2）微观系统；</p>
-								<p>（3）中层系统；</p>
-								<p>（4）宏观系统</p>
+					</div>
+					<div class="tishixinxi" id="tishiyi4">
+						<p>5、生活模式的评估系统</p>
+						<p>理论基础：</p>
+						<p>整合了一般系统理论、生态学观点、增权等理论来源，建构了综合性的生态系统观点</p>
+						<p>评估技巧：</p>
+						<p>（1）人格特质；</p>
+						<p>（2）微观系统；</p>
+						<p>（3）中层系统；</p>
+						<p>（4）宏观系统</p>
+					</div>
+					<div class="tishixinxi" id="tishiyi5">
+						<p>6、家庭结构评估模式</p>
+						<p>理论基础：</p>
+						<p>理论焦点在于家庭的结构，包括家庭行为模式、家庭系统与次系统、家庭生活循环</p>
+						<p>评估技巧：</p>
+						<p>（1）谁是家庭中的主事者？</p>
+						<p>（2）家庭成员是如何处理其冲突的？</p>
+						<p>（3）在家庭中是否有被谴责的“已被认定的病人”？</p>
+						<p>（4）画出家庭的世代图有助于对案主在家庭世代中所处脉络的了解</p>
 
-							</div>
-							<div class="tishixinxi" id="tishiyi5">
-								<p>6、家庭结构评估模式</p>
-								<p>理论基础：</p>
-								<p>理论焦点在于家庭的结构，包括家庭行为模式、家庭系统与次系统、家庭生活循环</p>
-								<p>评估技巧：</p>
-								<p>（1）谁是家庭中的主事者？</p>
-								<p>（2）家庭成员是如何处理其冲突的？</p>
-								<p>（3）在家庭中是否有被谴责的“已被认定的病人”？</p>
-								<p>（4）画出家庭的世代图有助于对案主在家庭世代中所处脉络的了解</p>
-
-							</div>
-							<div class="tishixinxi" id="tishiyi6">
-								<p>7、多重评估模式</p>
-								<p>理论基础：</p>
-								<p>拉扎勒斯根据班杜拉的社会学习理论、一般系统理论、团体及沟通理论等发展出来的一套完整的理论。它是一种非常个人化的治疗，根据每个人的个别性而采取不同的介入方法</p>
-								<p>评估技巧：</p>
-								<p>B:行为（behavior）</p>
-								<p>A:情感（affect）</p>
-								<p>S:知觉（sensation）</p>
-								<p>C:认知（cognition）</p>
-								<p>I:人际关系（interpersonal relationships）</p>
-								<p> D:药物与生理因素（drugs/biology） </p>
-							</div>
-							<div class="tishixinxi" id="tishiyi7">
-								<p>8、综融式评估模式</p>
-								<p>理论基础：</p>
-								<p>受系统理论、问题解决派社会工作理论的影响。采纳的是系统观或者环境中的人这一观点，倡导综合管理</p>
-								<p>评估技巧：</p>
-								<p>（1）基本资料；</p>
-								<p>（2）目前问题的本质；</p>
-								<p>（3）案主（包括案主自身、家庭、学校/工作单位、朋友/同僚/同学）；</p>
-								<p>（4）脉络与社会支持网络；</p>
-								<p>（5）心理测量或评估量表；</p>
-								<p>（6）摘要</p>
-							</div>
+					</div>
+					<div class="tishixinxi" id="tishiyi6">
+						<p>7、多重评估模式</p>
+						<p>理论基础：</p>
+						<p>拉扎勒斯根据班杜拉的社会学习理论、一般系统理论、团体及沟通理论等发展出来的一套完整的理论。它是一种非常个人化的治疗，根据每个人的个别性而采取不同的介入方法</p>
+						<p>评估技巧：</p>
+						<p>B:行为（behavior）</p>
+						<p>A:情感（affect）</p>
+						<p>S:知觉（sensation）</p>
+						<p>C:认知（cognition）</p>
+						<p>I:人际关系（interpersonal relationships）</p>
+						<p> D:药物与生理因素（drugs/biology） </p>
+					</div>
+					<div class="tishixinxi" id="tishiyi7">
+						<p>8、综融式评估模式</p>
+						<p>理论基础：</p>
+						<p>受系统理论、问题解决派社会工作理论的影响。采纳的是系统观或者环境中的人这一观点，倡导综合管理</p>
+						<p>评估技巧：</p>
+						<p>（1）基本资料；</p>
+						<p>（2）目前问题的本质；</p>
+						<p>（3）案主（包括案主自身、家庭、学校/工作单位、朋友/同僚/同学）；</p>
+						<p>（4）脉络与社会支持网络；</p>
+						<p>（5）心理测量或评估量表；</p>
+						<p>（6）摘要</p>
+					</div>
+						</form>
+						<form method="post">
+						
+							<input type="checkbox"  id="ms0" value="0" name="ms"/><label for="ms0" >心理社会评估模式</label><img src="img/icon_tshi.png" style="width: 25px;height: 25px;float: right;position: relative;left: -25px;top: -3px;" onmouseover="xianshi()" onmouseout="likai()" />
+						</form>
+						<form method="post">
+						
+							<input type="checkbox" id="ms1" value="1" name="ms"/><label for="ms1">问题解决模式</label><img src="img/icon_tshi.png" style="width: 25px;height: 25px;float: right;position: relative;left: -25px;top: -3px;" onmouseover="xianshi1()" onmouseout="likai1()" />
+						</form>
+						
+						<form method="post">
+						
+							<input type="checkbox" id="ms2" value="2" name="ms"/><label for="ms2">行为评估模式</label><img src="img/icon_tshi.png" style="width: 25px;height: 25px;float: right;position: relative;left: -25px;top: -3px;" onmouseover="xianshi2()" onmouseout="likai2()" />
+						</form>
+						
+						<form method="post">
+						
+							<input type="checkbox" id="ms3" value="3" name="ms"/><label for="ms3">任务中心评估模式</label><img src="img/icon_tshi.png" style="width: 25px;height: 25px;float: right;position: relative;left: -25px;top: -3px;" onmouseover="xianshi3()" onmouseout="likai3()" />
 						</form>
 						<form method="post">
 
-							<input type="checkbox" value="0"/><label>问题解决模式</label><img src="img/icon_tshi.png" style="width: 25px;height: 25px;float: right;position: relative;left: -25px;top: -3px;"/>
+							<input type="checkbox" id="ms4" value="4" name="ms"/><label for="ms4">生活模式的评估系统</label><img src="img/icon_tshi.png" style="width: 25px;height: 25px;float: right;position: relative;left: -25px;top: -3px;" onmouseover="xianshi4()" onmouseout="likai4()" />
 						</form>
 						<form method="post">
 
-							<input type="checkbox" value="1"/><label>行为评估模式</label><img src="img/icon_tshi.png" style="width: 25px;height: 25px;float: right;position: relative;left: -25px;top: -3px;"/>
+							<input type="checkbox" id="ms5" value="5" name="ms"/><label for="ms5">家庭结构评估模式</label><img src="img/icon_tshi.png" style="width: 25px;height: 25px;float: right;position: relative;left: -25px;top: -3px;" onmouseover="xianshi5()" onmouseout="likai5()" />
 						</form>
 						<form method="post">
 
-							<input type="checkbox" value="2"/><label>任务中心评估模式</label><img src="img/icon_tshi.png" style="width: 25px;height: 25px;float: right;position: relative;left: -25px;top: -3px;"/>
+							<input type="checkbox" id="ms6" value="6" name="ms"/><label for="ms6">多重评估模式</label><img src="img/icon_tshi.png" style="width: 25px;height: 25px;float: right;position: relative;left: -25px;top: -3px;" onmouseover="xianshi6()" onmouseout="likai6()" />
 						</form>
 						<form method="post">
 
-							<input type="checkbox" value="3"/><label>生活模式的评估系统</label><img src="img/icon_tshi.png" style="width: 25px;height: 25px;float: right;position: relative;left: -25px;top: -3px;"/>
-						</form>
-						<form method="post">
-
-							<input type="checkbox" value="4"/><label>家庭结构评估模式</label><img src="img/icon_tshi.png" style="width: 25px;height: 25px;float: right;position: relative;left: -25px;top: -3px;"/>
-						</form>
-						<form method="post">
-
-							<input type="checkbox" value="5"/><label>多重评估模式</label><img src="img/icon_tshi.png" style="width: 25px;height: 25px;float: right;position: relative;left: -25px;top: -3px;"/>
-						</form>
-						<form method="post">
-
-							<input type="checkbox" value="6"/><label>综融式评估模式</label><img src="img/icon_tshi.png" style="width: 25px;height: 25px;float: right;position: relative;left: -25px;top: -3px;"/>
+							<input type="checkbox" id="ms7" value="7" name="ms"/><label for="ms7">综融式评估模式</label><img src="img/icon_tshi.png" style="width: 25px;height: 25px;float: right;position: relative;left: -25px;top: -3px;" onmouseover="xianshi7()" onmouseout="likai7()" />
 						</form>
 					</div>
 					<div class="col2">
@@ -252,6 +257,16 @@
 		</div>
 		<!-- 隐含域 -->
 		<form style="display: none">
+			<input name="zhenduan_id" id="zhenduan_id"/><!-- 用于更新操作存放数据 -->
+			<input name="linchuang_pinggu" id="linchuang_pinggu"/>
+			<input name="diaocha_wenjuan" id="diaocha_wenjuan"/>
+			<input name="goutong_moshi" id="goutong_moshi" />
+			<input name="jiating_tupian_lianjie" id="jiating_tupian_lianjie" /><!-- 图片是预先存放好的图片 -->
+			<input name="shengtai_tupian_lianjie" id="shengtai_tupian_lianjie" />
+			<input name="shehui_tupian_lianjie" id="shehui_tupian_lianjie" />
+			<input name="diaocha_miaoshu" id="diaocha_miaoshu"/>
+			<input name="fk_userid" id="fk_userid"/>
+			<input name="fk_anli_id" id="fk_anli_id"/>
 		</form>
 		<script src="js/fenxizhenduan.js" type="text/javascript" charset="utf-8"></script>
 	</body>

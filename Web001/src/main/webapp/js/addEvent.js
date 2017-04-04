@@ -42,7 +42,7 @@ $("#okButton").click(function() {
 	var startTime = $("#startTime").val();
 	var endTime = $("#endTime").val();
 	var anli_id=sessionStorage.getItem("anli_id");
-	/*while (uom <= endDay) {
+	while (uom <= endDay) {
 		var w1 = getWeek(uom.getDay());
 		if (w1 == week) {
 			var year = uom.getFullYear();
@@ -61,14 +61,14 @@ $("#okButton").click(function() {
 			$('#calendar').fullCalendar('unselect');
 		}
 		uom = showdate(uom, 1);
-	}*/
+	}
 	document.getElementById("middle").style.display = "none";
 	document.getElementById("shishi").style.display = "none";
 	//添加事件使用ajax添加
 	var shijian_sdate=formatDate(startDay);
 	var shijian_edate=formatDate(endDay);
 	var option={
-		url:getRealPath()+"/addEventCtrl/addEvent",
+		url:"DateEventCtrl/dateEventCtrl",
 		type:"post",
 		data:{
 			"shijian_biaoti":title,
@@ -77,7 +77,9 @@ $("#okButton").click(function() {
 			"shijian_edate":shijian_edate,
 			"shijian_stime":startTime,
 			"shijian_etime":endTime,
-			"anli_id":anli_id
+			"anli_id":anli_id,
+			"method":"add",
+			"fk_userid":getCookie("userid")
 		},
 		dataType:"json",
 		success:function(result){

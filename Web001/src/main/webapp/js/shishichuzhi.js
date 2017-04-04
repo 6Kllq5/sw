@@ -15,7 +15,9 @@ $(document).ready(function (){
 		type:"post",
 		url:"ChuZhiCtrl/chuZhiCtrl",
 		data:{
-			"method":"select"
+			"method":"select",
+			"fk_userid":getCookie("userid"),
+			"fk_anli_id":getCookie("anli_id")
 		},
 		async:false,
 		dataType:"json",
@@ -34,7 +36,7 @@ $(document).ready(function (){
 			window.location.href="error.html";
 		}
 	});
-	
+	//初始化页面数据
 	KindEditor.ready(function(K) {
 		var editor1 = K.create('textarea[name="content1"]', {
 			cssPath: 'kindeditor-v4.1.7/kindeditor-4.1.7/plugins/code/prettify.css',
@@ -68,6 +70,7 @@ var option={
 	data:$("#paramForm").serialize(),
 	async:false,
 	success:function (){
+		
 	},
 	error:function (){
 		window.location.href="error.html";

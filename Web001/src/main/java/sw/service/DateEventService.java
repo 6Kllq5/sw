@@ -39,7 +39,9 @@ public class DateEventService implements TableServiceFun{
 	@Override
 	public int executAddOne_S(Map paraMap) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		int resultInt = 0;
+		resultInt=(int) daoSupport.save("sw.insert_event", paraMap);
+		return resultInt;
 	}
 
 	
