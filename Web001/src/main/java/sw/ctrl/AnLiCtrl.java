@@ -42,6 +42,8 @@ public class AnLiCtrl implements TableCtrlFun{
 			paraMap.put("offset", offset);
 			paraMap.put("rowInOnePage", rowInOnePage);
 			resultMap=selectAll_C(paraMap);
+		}else if(method.equals("selectOne")){
+			resultMap=selectOne_C(paraMap);
 		}else if(method.equals("add")){
 			String anli_id=UUIDUtil.getRandom().toString();
 			paraMap.put("anli_id", anli_id);
@@ -57,7 +59,18 @@ public class AnLiCtrl implements TableCtrlFun{
 	@Override
 	public Map selectOne_C(Map paraMap) {
 		// TODO Auto-generated method stub
-		return null;
+		Map resultMap=new HashMap();
+		Map tempMap=new HashMap();
+		try {
+			tempMap=anLiService.executSelectOne_S(paraMap);
+			resultMap.put("data", tempMap);
+			resultMap.put("statu", 1);
+			resultMap.put("message", "查询成功");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return resultMap;
 	}
 
 	@Override

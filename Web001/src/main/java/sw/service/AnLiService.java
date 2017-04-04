@@ -27,7 +27,9 @@ public class AnLiService implements TableServiceFun{
 	@Override
 	public Map executSelectOne_S(Map paraMap)  throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		Map resultMap=new HashMap<>();
+		resultMap=(Map) daoSupport.findForObject("sw.select_anli",paraMap);
+		return resultMap;
 	}
 
 	@Override

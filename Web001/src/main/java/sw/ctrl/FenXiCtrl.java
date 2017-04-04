@@ -46,7 +46,7 @@ public class FenXiCtrl implements CtrlFun{
 	public Map uploadImg(@RequestParam(value = "file", required = false) MultipartFile file,
 			HttpServletRequest request){
 		Map resultMap=new HashMap();
-		String filePawth= FileUtil.uploadImg(file, request);//回传前台进行缓存数据
+		String filePath= FileUtil.uploadImg(file, request);//回传前台进行缓存数据
 		return resultMap;
 	}
 	

@@ -52,6 +52,9 @@ $(document).ready(function (){
 		}else{
 			$("#select_state").find("option").eq(3).attr("selected","selected");
 		}
+		if(getCookie("role")==0){
+			$("#fk_userid").val(getCookie("userid"));
+		}
 		option.data=$("#paraForm").serialize();
 		delCookie("minstate");
 		delCookie("maxstate");
@@ -135,11 +138,18 @@ function getPageNumByOffset(offset,rowInOnePage){
 	}
 	return parseInt(offset/rowInOnePage)+1;
 }
+
+
+
 //点击某一个tr查看具体的，情况
 function lookDetil(anli_id,state){
 	SetCookie("anli_id",anli_id);
+	SetCookie("state",state);
 	window.parent.rightFrame.location="right3.html";
 }
+
+
+
 //假删除某一个案例
 function del(event,anli_id){
 	event.stopPropagation(); 

@@ -10,11 +10,6 @@ function getRealPath(){
 }
 
 $(document).ready(function (){
-	
-	
-	
-	
-	
 	KindEditor.ready(function(K) {
 		var editor1 = K.create('textarea[name="content1"]', {
 			cssPath: 'kindeditor-v4.1.7/kindeditor-4.1.7/plugins/code/prettify.css',
@@ -81,6 +76,8 @@ $("#saveAndStep").click(function (){
 $(window).bind('beforeunload',function(){ 
 	delCookie("chuzhi_id");
 });
+
+
 
 
 

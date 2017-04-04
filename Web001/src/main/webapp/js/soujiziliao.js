@@ -26,7 +26,7 @@ function clearFileInput(){
 	file.after(file.clone().val("")); 
 	file.remove();  
 }
-//
+
 //验证是否选择了文件
 function isHaveFile(){
 	var file = $("#file").val();
@@ -175,6 +175,7 @@ $(document).ready(function (){
 		option.success=function(result){
 			alert(result.message);
 		};
+		$("#state").val(getCookie("state"));
 		$("#fileForm").ajaxSubmit(option);
 		clearFileInput();
 		insertTable();
@@ -184,7 +185,24 @@ $(document).ready(function (){
 	//点击上传文件并且跳转
 	$("#saveAndStep").click(function (){
 		if(!isHaveFile()){
-			window.location.href="fenxizenduan.html";
+			//发送一个请求更新state,没有办法只能这么做了
+			$.ajax({
+				url:"FileCtrl/updateState",
+				type:"post",
+				dataType:"json",
+				data:{
+					"anli_id":getCookie("anli_id"),
+					"fk_userid":getCookie("userid"),
+					"state":2
+				},
+				async:false,
+				success:function (result){
+					
+					window.location.href="fenxizenduan.html";
+				},
+				error:function (){
+				}
+			});
 			return;
 		}else{
 			option.success=function(result){
@@ -192,12 +210,12 @@ $(document).ready(function (){
 				window.location.href="fenxizenduan.html";
 			};
 			$("#wenjian_jianjie").val($("wjjj").text());
+			$("#state").val(2);
 			$("#fileForm").ajaxSubmit(option);
 			clearFileInput();
 			insertTable();
 		};
 	});
-	
 	
 	//点击天添加简介事件
 	$("#commit").click(function(){

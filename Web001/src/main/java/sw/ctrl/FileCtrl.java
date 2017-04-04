@@ -121,6 +121,49 @@ public class FileCtrl implements TableCtrlFun{
 	        return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file),headers, HttpStatus.CREATED);    
 	}  
 	
+	
+	
+	@RequestMapping("updateState")
+	@ResponseBody
+	public Map updateState(HttpServletRequest request){
+		Map paraMap=new HashMap<>();
+		Map resultMap=new HashMap();
+		paraMap=RequestTool.getParameterMap(request);
+		try {
+			fileService.executUpdateState(paraMap);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return resultMap;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@Override
 	public Map selectOne_C(Map paraMap) {
 		Map resultMap=new HashMap();
@@ -147,7 +190,6 @@ public class FileCtrl implements TableCtrlFun{
 		return resultMap;
 	}
 	
-	
 	@Override
 	public Map updateOne_C(Map paraMap) {
 		// TODO Auto-generated method stub
@@ -164,14 +206,12 @@ public class FileCtrl implements TableCtrlFun{
 		return resultMap;
 	}
 	
-	
 	@Override
 	public Map addOne_C(Map paraMap) {
 		// TODO Auto-generated method stub
 		Map resultMap=new HashMap();
 		return resultMap;
 	}
-
 	
 	@Override
 	public Map selectAll_C(Map paraMap) {

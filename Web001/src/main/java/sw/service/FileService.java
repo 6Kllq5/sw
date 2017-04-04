@@ -20,14 +20,11 @@ public class FileService implements TableServiceFun{
 		this.daoSupport = daoSupport;
 	}
 	
-	
-	
 	@Override
 	public Map executSelectOne_S(Map paraMap) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
 	
 	@Override
 	public int executUpdateOne_S(Map paraMap) {
@@ -75,5 +72,13 @@ public class FileService implements TableServiceFun{
 		
 		return resultInt;
 	}
+	
+	
+	public int executUpdateState(Map paraMap) throws Exception{
+		int resultInt =0;
+		resultInt=(int) daoSupport.update("sw.update_state", paraMap);//添加时修稿对应的案例的state
+		return resultInt;
+	}
+	
 	
 }

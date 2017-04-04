@@ -22,10 +22,12 @@ public class FileUtil {
 	//返回文件存放路径---文件上传
 	public static String uploadFile(MultipartFile file,HttpServletRequest request){
 		String  resultString =null;
+		String reallyName= file.getOriginalFilename();// 获取问价名称是传过来的文件名称
+		String array[]=reallyName.split("\\.");
+		String suff=array[array.length-1];
 		try{
-			String filename=String.valueOf(new Date().getTime());//使用时间作为文件名称保证唯一
-			
-//			String filename = file.getOriginalFilename();// 获取问价名称是传过来的文件名称
+			String filename=String.valueOf(new Date().getTime())+"."+suff;//使用时间作为文件名称保证唯一
+//			
 			String webroot = request.getServletContext().getRealPath("/");
 			String userFolder=request.getParameter("fk_userid");//对应上传者的目录
 			String anliFolder=request.getParameter("fk_anli_id");//对应某一个案例的文件存放目录

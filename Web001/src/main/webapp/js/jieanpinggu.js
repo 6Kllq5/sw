@@ -8,6 +8,8 @@ function getRealPath(){
 	var realPath=localhostPaht+projectName;
 	return realPath;
 }
+
+
 //定义ajax 
 var option={
 	url:"JiHuaCtrl/jiHuaCtrl",
