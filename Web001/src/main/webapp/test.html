@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/cookie.js"></script>
+<script type="text/javascript" src="js/jquery-form.js"></script>
+</head>
+<body>
+	<form id="commitForm">
+		<label>批量导入用户--只能使用excel文件</label>
+		<br>
+		<input name="file" type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"/>
+		<input type="hidden" value="" id="fk_userid" name="fk_userid">
+	</form>
+	<button>提交</button>
+	<script type="text/javascript">
+		$("#fk_userid").val(getCookie("userid"));
+		var option={
+			url:"UserCtrl/insert_bunch",
+			type:"post",
+			dataType:"json",
+			async:false,
+			success:function (result){
+				alert(result.message);
+			},
+			error:function(){
+				window.location.href="error.html"
+			}
+		}
+		
+		$("button").click(function (){
+			$("#commitForm").ajaxSubmit(option);
+		});
+	</script>
+</body>
+</html>

@@ -14,7 +14,6 @@ import sw.ctrl.ctrl_interface.CtrlFun;
 import sw.service.PingGuService;
 import swutil.RequestTool;
 import swutil.UUIDUtil;
-
 @Controller
 @RequestMapping("PingGuCtrl")
 public class PingGuCtrl implements CtrlFun{
