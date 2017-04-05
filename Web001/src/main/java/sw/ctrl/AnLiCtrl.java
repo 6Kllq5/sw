@@ -25,8 +25,8 @@ public class AnLiCtrl implements TableCtrlFun{
 	private AnLiService anLiService;
 	public void setAnLiService(AnLiService anLiService) {
 		this.anLiService = anLiService;
+		
 	}
-	
 	
 	@RequestMapping("anLiCtrl")
 	@ResponseBody
