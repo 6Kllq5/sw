@@ -6,7 +6,8 @@
 		<link rel="stylesheet" type="text/css" href="css/reset.css" />
 		<link rel="stylesheet" type="text/css" href="css/jieanpinggu.css" />
 		<link rel="stylesheet" type="text/css" href="css/anlibianxie.css" />
-		<script type="text/javascript" src="fullcalendar-3.0.1/lib/jquery.min.js" ></script>
+		<script type="text/javascript" src="js/jquery.js" ></script>
+		<script type="text/javascript" src="js/cookie.js"></script>
 		<title></title>
 	</head>
 	<body>
@@ -17,24 +18,22 @@
 				<div class="zuo1">
 					<p style="color: red;font-weight: bold;position: relative;left: 28%;">!!是否达到目标</p>
 					<form method="post" style="margin: 10px 30%;">
-
-						<input type="radio" name="zx" value="yes" checked="checked" id="y1"/><label for="y1">是</label>
-						<input type="radio" name="zx" value="no" style="margin-left: 5px;" id="n1" /><label for="n1">否</label>
-
+						<input type="radio" name="ddmb" value="yes" checked="checked" id="y1"/><label for="y1">是</label>
+						<input type="radio" name="ddmb" value="no" style="margin-left: 5px;" id="n1" /><label for="n1">否</label>
 					</form>
-					<textarea placeholder="请输入您预期想要达到的目标..." disabled="disabled" style="font-size: 12px;height: 150px;width: 80%;"></textarea>
-
+					<textarea id="mb_content" placeholder="请输入您预期想要达到的目标..." disabled="disabled" style="font-size: 12px;height: 150px;width: 80%;"></textarea>
 				</div>
+				
+				
 				<!--工作方式是否得当-->
 				<div class="zuo1" style="margin-top: 20px;">
 					<p style="color: red;font-weight: bold;position: relative;left: 28%;">!!工作方式是否得当</p>
 					<form method="post" style="margin: 10px 30%;">
 
-						<input type="radio" name="zx" value="yes" checked="checked" id="y2"/><label for="y2">是</label>
-						<input type="radio" name="zx" value="no" style="margin-left: 5px;" id="n2"/><label for="n2">否</label>
-
+						<input type="radio" name="gzfs" value="yes" checked="checked" id="y2"/><label for="y2">是</label>
+						<input type="radio" name="gzfs" value="no" style="margin-left: 5px;" id="n2"/><label for="n2">否</label>
 					</form>
-					<textarea placeholder="请输入您预期想要达到的目标..." disabled="disabled" style="font-size: 12px;height: 150px;width: 80%;"></textarea>
+					<textarea id="gzfs_content" placeholder="期望的工作方式..." disabled="disabled" style="font-size: 12px;height: 150px;width: 80%;"></textarea>
 
 				</div>
 			</div>	
@@ -43,29 +42,27 @@
 				<div class="you1">
 					<p style="color: red;font-weight: bold;position: relative;left: 28%;">!!评定等级</p>
 					<form method="post" style="margin: 10px 30%;">
-
-						<input type="radio" name="zx" value="d1" checked="checked" id="d1"/><label for="d1">等级一</label>
+						<input type="radio" name="pddj" value="0" checked="checked" id="d1"/><label for="d1">等级一</label>
 						<br />
-						<input type="radio" name="zx" value="d2" id="d2"/><label for="d2">等级二</label>
+						<input type="radio" name="pddj" value="1" id="d2"/><label for="d2">等级二</label>
 						<br />
-						<input type="radio" name="zx" value="d3" id="d3" /><label for="d3">等级三</label>
+						<input type="radio" name="pddj" value="2" id="d3" /><label for="d3">等级三</label>
 						<br />
-						<input type="radio" name="zx" value="d4" id="d4" /><label for="d4">等级四</label>
+						<input type="radio" name="pddj" value="3" id="d4" /><label for="d4">等级四</label>
 						<br />
-						<input type="radio" name="zx" value="d5" id="d5" /><label for="d5">等级五</label>
+						<input type="radio" name="pddj" value="4" id="d5" /><label for="d5">等级五</label>
 					</form>
 				<!--提示跟进服务-->
 				<div class="you2" style="margin-top: 75px;">
 					<p style="color: red;font-weight: bold;position: relative;left: 28%;">!!提示跟进服务</p>
 					<form method="post" style="margin: 10px 30%;width: 80%;">
-
-						<input type="radio" name="zx" value="g1" checked="checked" id="dhgj"/><label for="dhgj">电话跟进</label>
+						<input type="radio" name="gjfw" value="0" checked="checked" id="dhgj"/><label for="dhgj">电话跟进</label>
 						<br />
-						<input type="radio" name="zx" value="g2" id="gbhm"/><label for="gbhm">个别会面</label>
+						<input type="radio" name="gjfw" value="1" id="gbhm"/><label for="gbhm">个别会面</label>
 						<br />
-						<input type="radio" name="zx" value="g3" id="jthm" /><label for="jthm">集体会面</label>
+						<input type="radio" name="gjfw" value="2" id="jthm" /><label for="jthm">集体会面</label>
 						<br />
-						<input type="radio" name="zx" value="g4"  id="gjfwdxdshwl"/><label for="gjfwdxdshwl">跟进服务对象的社会支持网络</label>
+						<input type="radio" name="gjfw" value="3"  id="gjfwdxdshwl"/><label for="gjfwdxdshwl">跟进服务对象的社会支持网络</label>
 					</form>
 				</div>
 			</div>
@@ -73,7 +70,7 @@
 		<div class="chengxiaojielun" style="clear: both;position: relative;top: 20px;">
 			<p style="float: left;">成效结论<p style="color: red;float: left;">*</p></p>
 			<br />
-			<textarea style="width: 100%;height: 180px;clear: both;margin-top: 10px; resize:none;" cols="3" rows="2"></textarea>
+			<textarea id="cxjl" style="width: 100%;height: 180px;clear: both;margin-top: 10px; resize:none;" cols="3" rows="2"></textarea>
 			<button type="button" style="background: #3e97c9;width: 80px;height: 30px;color: #FFFFFF;margin-left: 88%;margin-top: 20px;border-radius: 5px;border: none;" id="save">保存</button>
 		</div>
 		<!--右边提示部分-->
@@ -89,8 +86,10 @@
 			<input name="pingding_dengji" id="pingding_dengji"> 
 			<input name="gengjing_fuwu" id="gengjing_fuwu">
 			<input name="chengxiao_jielun" id="chengxiao_jielun">
+			<input name="state" id="state" value="7"/>
 			<input name="fk_userid" id="fk_userid">
 			<input name="fk_anli_id" id="fk_anli_id">
 		</form>		
+		<script type="text/javascript" src="js/jieanpinggu.js"></script>
 	</body>
 </html>

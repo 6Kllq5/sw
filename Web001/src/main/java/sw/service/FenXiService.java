@@ -23,17 +23,22 @@ public class FenXiService implements ServiceFun{
 		this.daoSupport = daoSupport;
 	}
 	
-	
 	@Override
 	public Map executSelectOne_S(Map paraMap) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		Map reusltMap=new HashMap();
+		reusltMap=(Map)daoSupport.findForObject("sw.select_fenXiResult", paraMap);
+		return reusltMap;
 	}
+	
 	@Override
 	public int executUpdateOne_S(Map paraMap) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		int resultInt=0;
+		resultInt= (int) daoSupport.update("sw.update_fenXiResult", paraMap);
+		return resultInt;
 	}
+	
 	@Override
 	public int executAddOne_S(Map paraMap) throws Exception {
 		// TODO Auto-generated method stub

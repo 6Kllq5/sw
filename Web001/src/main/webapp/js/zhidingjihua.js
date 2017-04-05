@@ -9,10 +9,11 @@ function getRealPath(){
 	return realPath;
 }
 
-
-
 //页面加载的时候进行的数据处理
 $(document).ready(function (){
+	//填充的外键数据
+	$("#fk_userid").val(getCookie("userid"));
+	$("#fk_anli_id").val(getCookie("anli_id"));
 	//查询数据填充页面
 	$.ajax({
 		type:"post",
@@ -24,14 +25,16 @@ $(document).ready(function (){
 		dataType:"json",
 		success:function (result){
 			var data=result.data;
-			if(data!=null){
+			if(data==null){
 				//填充页面数据
-				
-				
-				
-				//缓存cookie --- id 值以后点击就是修改操作
-				SetCookie("jihua_id",result.jihua_id);
+				return;
 			}
+			$("#one_jhmx").val(data.jihua_moxing);
+			$("#one_jhsj").val(data.jihua_shijian);
+			$("#one_jhnr").val(data.jihua_neirong);
+			$("#one_jhbz").val(data.jihua_beizhu);
+			//缓存cookie --- id 值以后点击就是修改操作
+			SetCookie("jihua_id",data.jihua_id);
 		},
 		error:function(){
 			window.location.href="error.html";
@@ -40,8 +43,6 @@ $(document).ready(function (){
 	
 	//初始化插件
 	KindEditor.ready(function(K) {
-		
-		
 		var editor1 = K.create('textarea[name="content1"]', {
 			cssPath: 'kindeditor-v4.1.7/kindeditor-4.1.7/plugins/code/prettify.css',
 			resizeType:0,
@@ -59,8 +60,6 @@ $(document).ready(function (){
 			}
 		});
 	});
-	
-	
 	
 	//初始化日历控件
 	$('#calendar').fullCalendar({
@@ -193,11 +192,7 @@ $(document).ready(function (){
 	        });
 		},
 	});
-	
-	$("#fk_userid").val(getCookie("userid"));
-	$("#fk_anli_id").val(getCookie("anli_id"));
 });
-
 
 //定义ajax 
 var option={
@@ -213,26 +208,26 @@ var option={
         alert(textStatus);
     }
 };
-
 //填提交表单必要的参数
 function insertParaForm(){
-	
-	
+	$("#jihua_moxing").val($("#one_jhmx").val());
+	$("#jihua_shijian").val($("#one_jhsj").val());
+	$("#jihua_neirong").val($("#one_jhnr").val());
+	$("#jihua_beizhu").val($("#jihua_beizhu").val());
 }
 
-
-
+//添加
 function add(){
 	insertParaForm();
 	option.data=$("#paraForm").serialize();
 }
 
+//修改
 function update(){
 	$("#method").val("update");
 	insertParaForm();
 	option.data=$("#paraForm").serialize();
 }
-
 
 //点击提交
 $("#save").click(function (){
@@ -242,14 +237,17 @@ $("#save").click(function (){
 	};
 	alert(getCookie("jihua_id"));
 	if(getCookie("jihua_id")!=null){
+		$("#state").val(getCookie("state"));
 		update();
 	}else{
+		$("#state").val(4);
 		add();
 	}
 	$.ajax(option);
 });
 
 $("#saveAndStep").click(function (){
+	$("#state").val(5);
 	option.success=function(result){
 		alert(result.message);
 		window.location.href="shishichuzhi.html";

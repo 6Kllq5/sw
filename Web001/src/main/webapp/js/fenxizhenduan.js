@@ -79,7 +79,6 @@ function likai7()
 
 
 $(document).ready(function (){
-	
 	//加载富文本插件
 	KindEditor.ready(function(K) {
 		var editor1 = K.create('textarea[name="content1"]', {
