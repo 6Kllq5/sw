@@ -11,29 +11,6 @@ function getRealPath(){
 
 //初始化页面
 $(document).ready(function (){
-	//初始化页面数据
-	KindEditor.ready(function(K) {
-		var editor1 = K.create('textarea[name="content1"]', {
-			cssPath: 'kindeditor-v4.1.7/kindeditor-4.1.7/plugins/code/prettify.css',
-			resizeType:0,
-			//				uploadJson : '../jsp/upload_json.jsp',
-			//				fileManagerJson : '../jsp/file_manager_json.jsp',
-			allowFileManager: true,
-			
-			afterCreate: function() {
-				var self = this;
-				K.ctrl(document, 13, function() {
-					self.sync();
-					document.forms['example'].submit();
-				});
-				K.ctrl(self.edit.doc, 13, function() {
-					self.sync();
-					document.forms['example'].submit();
-				});
-			}
-		});
-		prettyPrint();
-	});
 	//填充id值
 	$("#fk_userid").val(getCookie("userid"));
 	$("#fk_anli_id").val(getCookie("anli_id"));
@@ -55,8 +32,9 @@ $(document).ready(function (){
 			}
 			//填充数据
 			$("#zdsj_content").val(data.zhengduan_shijian);
-			$(document.getElementsByTagName('iframe')[0].contentWindow.document.body).html(data.zhixing_miaoshu);//获取的是文本编辑器中的内容
+			$("#miaoshu_content").val(data.zhixing_miaoshu);//获取的是文本编辑器中的内容
 			$("#beizhu").val(data.beizhu);
+			$("#saveAndStep").css("display","none");
 			SetCookie("chuzhi_id", data.chuzhi_id);
 		},
 		error:function(){
@@ -82,8 +60,7 @@ var option={
 //填提交表单必要的参数
 function insertParaForm(){
 	$("#zhengduan_shijian").val($("#zdsj_content").val());
-	var zhixing_miaoshu= $(document.getElementsByTagName('iframe')[0].contentWindow.document.body).html();//获取的是文本编辑器中的内容
-	$("#zhixing_miaoshu").val(zhixing_miaoshu);
+	$("#zhixing_miaoshu").val($("#miaoshu_content").val());
 	$("#beizhu").val($("#beizhu_content").val());
 }
 
@@ -105,11 +82,13 @@ function update(){
 $("#save").click(function (){
 	option.success=function(result){
 		alert(result.message);
+		alert(result.chuzhi_id);
 		SetCookie("chuzhi_id",result.jihua_id);
 	};
 	alert(getCookie("chuzhi_id"));
 	if(getCookie("chuzhi_id")!=null){
 		$("#state").val(getCookie("state"));
+		
 		update();
 	}else{
 		$("#state").val(5);
@@ -123,14 +102,15 @@ $("#saveAndStep").click(function (){
 	$("#state").val(6);
 	option.success=function(result){
 		alert(result.message);
+		SetCookie("state", 6);
 		window.location.href="jieanpinggu.html";
+		window.parent.contentTop.location.href="biaoti.html";
 	};
 	if(getCookie("chuzhi_id")!=null){
 		update();
 	}else{
 		add();
 	}
-	window.location.href="jieanpinggu.html";
 	$.ajax(option);
 });
 

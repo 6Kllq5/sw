@@ -28,6 +28,8 @@ public class AnLiCtrl implements TableCtrlFun{
 		
 	}
 	
+	
+	
 	@RequestMapping("anLiCtrl")
 	@ResponseBody
 	public Map anLiCtrl(HttpServletRequest request){

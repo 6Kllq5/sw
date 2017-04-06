@@ -1,7 +1,9 @@
+/***********************************d定义的全局变量********************************************/
+//ajax option
 var option = {
 	url:"AnLiCtrl/anLiCtrl",
  	type:"post",
- 	data:$("#paramForm").serialize(),
+ 	data:$("#paraForm").serialize(),
  	dataType:"json",
  	async:false,
  	success:function (){},
@@ -9,7 +11,26 @@ var option = {
  		window.location.href="error.html";
  	}
 };
-//获取绝对上下文路径
+
+/*********************************页面加载*********************************************/
+
+$(document).ready(function (){
+	$("#one_user").text(getCookie("username"));
+	$("#one_anli_user").val(getCookie("username"));
+	$("#anli_id").val(getCookie("anli_id"));
+	$("#fk_userid").val(getCookie("userid"));
+	$("#fk_username").val(getCookie("username"));
+	var date=new Date();
+	var year=date.getFullYear();
+	var month=parseInt(date.getMonth())+1;
+	var day=date.getDate();
+	$("#one_anli_date").val(year+"-"+month+"-"+day);
+	initHtml();
+});
+
+/*********************************封装的功能函数*********************************************/
+
+//获取上下文路径
 function getRealPath(){
 	var curWwwPath=window.document.location.href;
 	var pathName=window.document.location.pathname;
@@ -20,7 +41,7 @@ function getRealPath(){
 	return realPath;
 }
 
-//点击进行添加案例
+//添加一个案例
 function add(){
 	if($("#state").val()=='8'){
 		$("#state").val(8);
@@ -28,26 +49,26 @@ function add(){
 		$("#state").val(1);
 	}
 	insertParaForm();
-	
-	alert($("#anli_no").val());
-	option.data=$("#paramForm").serialize();
+	option.data=$("#paraForm").serialize();
 }
 
-//点击进行案例修改
+//修改一个案例
 function update(){
 	$("#anli_id").val(getCookie("anli_id"));
-	$("#state").val(getCookie("state"));
+	if($("#state").val()=='8'){
+		$("#state").val(8);
+	}else{
+		$("#state").val(getCookie("state"));
+	}
 	$("#method").val("update");
 	insertParaForm();
-	option.data=$("#paramForm").serialize(),
-	option.success=function(result){
-		alert(result.message);
-	};
+	option.data=$("#paraForm").serialize();
 }
 
-//填充数据表格
+
+//填充参数表单
 function insertParaForm(){
-	$("#anli_no").val($("#one_anli_no").val());//案例编号
+	$("#anli_no").val($("#one_anli_no").val());
 	$("#anli_name").val($("#one_anli_name").val());
 	$("#anli_date").val($("#one_anli_date").val());
 	$("#anzhu_name").val($("#one_anzhu_name").val());
@@ -65,114 +86,14 @@ function insertParaForm(){
 	$("#qiuzhu_jigou").val($("#one_qiuzhu_jigou").val());
 	$("#zhuanjie_jigou").val($("#one_zhuanjie_jigou").val());
 	$("#bujiean_miaoshu").val($("#one_bujiean_miaoshu").val());
-	
-	
-	alert($("#anli_no").val());
 }
-
-
-//初始化加载
-$(document).ready(function (){
-	$("#one_user").text(getCookie("username"));
-	$("#one_anli_user").val(getCookie("username"));
-	$("#anli_id").val(getCookie("anli_id"));
-	$("#fk_userid").val(getCookie("userid"));
-	var date=new Date();
-	var year=date.getFullYear();
-	var month=parseInt(date.getMonth())+1;
-	var day=date.getDate();
-	$("#one_anli_date").val(year+"-"+month+"-"+day);
-	//每一次请求查看是否有数据，有则填充页面
-	
-	if(getCookie("anli_id")!=null){
-		initHtml();
-	}
-	
-});
-
-//点击不不接案
-$("#bja_btn").click(function(){
-	$("#bja").css("display","block");
-	$(".bujiean").css("display","block");
-	if($(this).text()=="不接案"){
-		$(this).text("接案");
-		$("#bja").css("display","block");
-		$(".bujiean").css("display","block");
-		$("#saveAndStep_btn").hide();
-		$("#state").val(8);
-	}else{
-		$(this).text("不接案");
-		$("#bja").css("display","none");
-		$(".bujiean").css("display","none");
-		$("#saveAndStep_btn").show();
-		$("#state").val("");
-	}
-});
-
-//点击具体某一件事情之后
-$("#qiuzhu").click(function (){
-	if($(this).is(':checked')){
-		$(this).next().next().attr("disabled",null);
-	}else{
-		$(this).next().next().attr("disabled","disabled");
-	}
-});
-
-$("#zhuanjie").click(function (){
-	if($(this).is(':checked')){
-		$(this).next().next().attr("disabled",null);
-	}else{
-		$(this).next().next().attr("disabled","disabled");
-	}
-});
-
-//点击保存按钮
-$("#save_btn").click(function (){
-	//以是否为空来进行判断只在第一个填写页面，其他页面使用是否对应某个值进行判断
-	if(getCookie("state")==null){
-		option.success=function(result){
-			alert(result.message);
-			SetCookie("anli_id", result.anli_id);
-			SetCookie("state", 1);
-		};
-		add();
-	}else{
-		$("#anli_id").val(getCookie("anli_id"));
-		option.success=function(result){
-			alert(result.message);
-		};
-		update();
-	}
-	$.ajax(option);
-});
-
-//点击并且跳转
-$("#saveAndStep_btn").click(function (){
-	if(getCookie("anli_id")==null){
-		option.success=function(result){
-			alert(result.message);
-			SetCookie("anli_id", result.anli_id);
-			SetCookie("state", 2);
-			window.location.href="soujiziliao.html";
-		};
-		add();
-	}else{
-		$("#anli_id").val(getCookie("anli_id"));
-		option.success=function(result){
-			alert(result.message);
-		};
-		update();
-		window.location.href="soujiziliao.html";
-	}
-	$.ajax(option);
-});
-
 
 //加载页面的时候进行页面的数据查询加载
 function initHtml(){
 	$.ajax({
 		url:"AnLiCtrl/anLiCtrl",
 		type:"post",
+		async:false,
 		data:{
 			"method":"selectOne",
 			"anli_id":getCookie("anli_id"),
@@ -181,7 +102,7 @@ function initHtml(){
 		dataType:"json",
 		success:function (result){
 			var data=result.data;
-			if(data.anli_id!=null){
+			if(data!=null){
 				$("#one_anli_no").val(data.anli_no);
 				$("#one_anli_name").val(data.anli_name);
 				$("#one_anli_date").val(data.anli_date);
@@ -210,7 +131,88 @@ function initHtml(){
 	});
 }
 
+/*******************************************页面js动态效果代码*****************************************/
 
+//点击不不接案
+$("#bja_btn").click(function(){
+	$("#bja").css("display","block");
+	$(".bujiean").css("display","block");
+	if($(this).text()=="不接案"){
+		$(this).text("接案");
+		$("#bja").css("display","block");
+		$(".bujiean").css("display","block");
+		$("#saveAndStep_btn").hide();
+		$("#state").val(8);
+	}else{
+		$(this).text("不接案");
+		$("#bja").css("display","none");
+		$(".bujiean").css("display","none");
+		$("#saveAndStep_btn").show();
+		$("#state").val("");
+		$("#qiuzhu").attr("checked",null);
+		$("#one_qiuzhu_jigou").val("");
+		$("#zhuanjie").attr("checked",null);
+		$("#one_zhuanjie_jigou").val("");
+		$("#one_bujiean_miaoshu").val("");
+	}
+});
 
+//点击具体某一件事情之后
+$("#qiuzhu").click(function (){
+	if($(this).is(':checked')){
+		$(this).next().next().attr("disabled",null);
+	}else{
+		$(this).next().next().attr("disabled","disabled");
+	}
+});
 
+$("#zhuanjie").click(function (){
+	if($(this).is(':checked')){
+		$(this).next().next().attr("disabled",null);
+	}else{
+		$(this).next().next().attr("disabled","disabled");
+	}
+});
 
+/*******************************************点击按钮事件****************************************************/
+
+//点击保存按钮
+$("#save_btn").click(function (){
+	if(getCookie("anli_id")==null){
+		option.success=function(result){
+			alert(result.message);
+			SetCookie("anli_id", result.anli_id);
+			SetCookie("state", 1);
+		};
+		add();
+	}else{
+		$("#anli_id").val(getCookie("anli_id"));
+		option.success=function(result){
+			alert(result.message);
+		};
+		update();
+	}
+	$.ajax(option);
+});
+
+//点击并且跳转
+$("#saveAndStep_btn").click(function (){
+	if(getCookie("anli_id")==null){
+		option.success=function(result){
+			alert(result.message);
+			SetCookie("anli_id", result.anli_id);
+			SetCookie("state", 2);
+			window.parent.contentTop.location.href="biaoti.html";
+			window.location.href="soujiziliao.html";
+		};
+		add();
+	}else{
+		$("#anli_id").val(getCookie("anli_id"));
+		option.success=function(result){
+			alert(result.message);
+		};
+		update();
+		window.location.href="soujiziliao.html";
+	}
+	$.ajax(option);
+});

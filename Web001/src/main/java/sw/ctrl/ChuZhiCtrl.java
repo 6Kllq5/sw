@@ -51,7 +51,14 @@ public class ChuZhiCtrl implements CtrlFun{
 		Map tempMap=new HashMap();
 		try {
 			tempMap=chuZhiService.executSelectOne_S(paraMap);
-			if(resultMap.size()>0){
+			if(tempMap==null)
+			{
+				resultMap.put("data",null);
+				resultMap.put("statu", 0);
+				resultMap.put("message", "查询失败");
+				return resultMap;
+			}
+			if(tempMap.size()>0){
 				resultMap.put("data",tempMap);
 				resultMap.put("statu", 1);
 				resultMap.put("message", "查询成功");
@@ -76,10 +83,10 @@ public class ChuZhiCtrl implements CtrlFun{
 			resultInt=chuZhiService.executUpdateOne_S(paraMap);
 			if(resultInt==0){
 				resultMap.put("statu", 0);
-				paraMap.put("message", "更新失败");
+				resultMap.put("message", "更新失败");
 			}else{
 				resultMap.put("statu", 1);
-				paraMap.put("message", "更新成功");
+				resultMap.put("message", "更新成功");
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -97,10 +104,11 @@ public class ChuZhiCtrl implements CtrlFun{
 			resultInt=chuZhiService.executAddOne_S(paraMap);
 			if(resultInt==0){
 				resultMap.put("statu", 0);
-				paraMap.put("message", "添加失败");
+				resultMap.put("message", "添加失败");
 			}else{
 				resultMap.put("statu", 1);
-				paraMap.put("message", "添加成功");
+				resultMap.put("message", "添加成功");
+				resultMap.put("chuzhi_id", paraMap.get("chuzhi_id"));
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

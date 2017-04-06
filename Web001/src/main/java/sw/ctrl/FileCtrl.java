@@ -74,13 +74,17 @@ public class FileCtrl implements TableCtrlFun{
 		
 		String fk_anli_id=request.getParameter("fk_anli_id");
 		
-		String wenjian_jianjie=request.getParameter("wenjian_jianjie");
+		String state = request.getParameter("state");
 		
+		String wenjian_jianjie=request.getParameter("wenjian_jianjie");
 		Calendar now = Calendar.getInstance();
 		int year=now.get(Calendar.YEAR);
 		int moueth=now.get(Calendar.MONTH) + 1;
 		int day=now.get(Calendar.DAY_OF_MONTH);
-		String wenjian_gengxinshijian=year+"-"+moueth+"-"+day;
+		int hours=now.get(Calendar.HOUR);
+		int minute=now.get(Calendar.MINUTE);
+		int second=now.get(Calendar.SECOND);
+		String wenjian_gengxinshijian=year+"-"+moueth+"-"+day+" "+hours+":"+minute+":"+second;
 		
 		String filename = file.getOriginalFilename();
 		
@@ -91,6 +95,7 @@ public class FileCtrl implements TableCtrlFun{
 		paraMap.put("wenjian_name", filename);
 		paraMap.put("wenjian_lujing", wenjian_lujing);
 		paraMap.put("wenjian_jianjie", wenjian_jianjie);
+		paraMap.put("state",state);
 		try {
 			resultInt=fileService.executAddOne_S(paraMap);
 			if(resultInt==0){

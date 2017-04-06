@@ -35,7 +35,7 @@ public class AnLiService implements TableServiceFun{
 	@Override
 	public int executUpdateOne_S(Map paraMap) throws Exception {
 		int resultInt=0;
-		resultInt=(int) daoSupport.update("sw.update_anLi", paraMap);
+		resultInt = (int) daoSupport.update("sw.update_anLi", paraMap);
 		return resultInt;
 	}
 

@@ -1,15 +1,84 @@
+/****************************全局变量*************************************/
+//ajax option
 var option={
 	url:"FileCtrl/uploadfileCtrl",
 	type:"post",
 	async:false,
 	dataType:"json",
 	success:function (result){
-		
 	},
 	error:function (){
 		window.location.href="error.html";
 	}
 };
+
+/*********************************页面加载*********************************************/
+$(document).ready(function (){
+	if(+getCookie("state")>2){
+		$("#saveAndStep").css("display","none");
+	}
+	$("#fk_userid").val(getCookie("userid"));
+	$("#fk_anli_id").val(getCookie("anli_id"));
+	
+	insertTable();
+	
+	$("#save_btn").click(function (){
+		if(!isHaveFile()){
+			alert("请选择要上传的文件");
+			return;
+		}
+		option.success=function(result){
+			alert(result.message);
+		};
+		$("#state").val(2);
+		$("#fileForm").ajaxSubmit(option);
+		clearFileInput();
+		insertTable();
+	});
+	
+	$("#saveAndStep").click(function (){
+		if(!isHaveFile()){
+			$.ajax({
+				url:"FileCtrl/updateState",
+				type:"post",
+				dataType:"json",
+				data:{
+					"fk_anli_id":getCookie("anli_id"),
+					"fk_userid":getCookie("userid"),
+					"state":3
+				},
+				async:false,
+				success:function (result){
+					SetCookie("state", 3);
+					window.parent.contentTop.location.href="biaoti.html";
+					window.location.href="fenxizenduan.html";
+				},
+				error:function (){
+				}
+			});
+			return;
+		}else{
+			option.success=function(result){
+				alert(result.message);
+				SetCookie("state", 3);
+				window.parent.contentTop.location.href="biaoti.html";
+				window.location.href="fenxizenduan.html";
+			};
+			$("#wenjian_jianjie").val($("wjjj").text());
+			$("#state").val(3);
+			$("#fileForm").ajaxSubmit(option);
+			clearFileInput();
+			insertTable();
+		};
+	});
+	
+	$("#commit").click(function(){
+		updateJianJie();
+		$("#fuc").css("display","none");
+	});
+});
+
+/*********************************封装的功能函数*********************************************/
 
 //获取绝对上下文路径
 function getRealPath(){
@@ -38,7 +107,6 @@ function isHaveFile(){
 		return true;
 	}
 }
-
 
 //添加页面数据
 function insertTable(){
@@ -86,7 +154,6 @@ function insertTable(){
 	});
 }
 
-
 //删除文件
 function deleteWj(wenjian_id){
 	$.ajax({
@@ -100,7 +167,6 @@ function deleteWj(wenjian_id){
 			"fk_anli_id":getCookie("anli_id")
 		},
 		success:function (result){
-			//删除回来提示删除情况
 			alert(result.message);
 		},
 		error:function (){
@@ -108,8 +174,6 @@ function deleteWj(wenjian_id){
 		}
 	});
 }
-
-
 
 //更新事件简介
 function updateJianJie(){
@@ -153,7 +217,6 @@ function dwd(wenjian_path){
 	downloadFile(wenjian_path);
 }
 
-
 //显示添加简介事件弹窗
 function addNote(wenjian_id,wenjian_jianjie,wenjian_name){
 	SetCookie("temp_wenjian_id", wenjian_id);
@@ -163,69 +226,6 @@ function addNote(wenjian_id,wenjian_jianjie,wenjian_name){
 }
 
 
-$(document).ready(function (){
-	$("#fk_userid").val(getCookie("userid"));
-	$("#fk_anli_id").val(getCookie("anli_id"));
-	if((anli_id=getCookie("anli_id"))!=null){
-		insertTable(anli_id);
-	}
-	//点击上传文件
-	$("#save_btn").click(function (){
-		if(!isHaveFile()){
-			alert("请选择要上传的文件");
-			return;
-		}
-		option.success=function(result){
-			alert(result.message);
-		};
-		$("#state").val(getCookie("state"));
-		$("#fileForm").ajaxSubmit(option);
-		clearFileInput();
-		insertTable();
-	});
-	
-	
-	//点击上传文件并且跳转
-	$("#saveAndStep").click(function (){
-		if(!isHaveFile()){
-			//发送一个请求更新state,没有办法只能这么做了
-			$.ajax({
-				url:"FileCtrl/updateState",
-				type:"post",
-				dataType:"json",
-				data:{
-					"anli_id":getCookie("anli_id"),
-					"fk_userid":getCookie("userid"),
-					"state":2
-				},
-				async:false,
-				success:function (result){
-					
-					window.location.href="fenxizenduan.html";
-				},
-				error:function (){
-				}
-			});
-			return;
-		}else{
-			option.success=function(result){
-				alert(result.message);
-				window.location.href="fenxizenduan.html";
-			};
-			$("#wenjian_jianjie").val($("wjjj").text());
-			$("#state").val(2);
-			$("#fileForm").ajaxSubmit(option);
-			clearFileInput();
-			insertTable();
-		};
-	});
-	
-	//点击天添加简介事件
-	$("#commit").click(function(){
-		updateJianJie();
-		$("#fuc").css("display","none");
-	});
-});
 
 
 

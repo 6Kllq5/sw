@@ -38,13 +38,12 @@ public class FenXiService implements ServiceFun{
 		resultInt= (int) daoSupport.update("sw.update_fenXiResult", paraMap);
 		return resultInt;
 	}
-	
 	@Override
 	public int executAddOne_S(Map paraMap) throws Exception {
 		// TODO Auto-generated method stub
 		int resultInt=0;
 		int updateResultInt=0;
-		resultInt=(int) daoSupport.save("sw.select_getFenXiResult", paraMap);
+		resultInt=(int) daoSupport.save("sw.insert_fenXiResult", paraMap);
 		updateResultInt=(int) daoSupport.update("sw.update_state", paraMap);//添加时修稿对应的案例的state
 		if((resultInt+updateResultInt)!=2){
 			//出现问题就要回滚

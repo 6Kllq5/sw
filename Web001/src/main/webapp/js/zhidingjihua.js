@@ -14,12 +14,15 @@ $(document).ready(function (){
 	//填充的外键数据
 	$("#fk_userid").val(getCookie("userid"));
 	$("#fk_anli_id").val(getCookie("anli_id"));
+	
 	//查询数据填充页面
 	$.ajax({
 		type:"post",
 		url:"JiHuaCtrl/jiHuaCtrl",
 		data:{
 			"method":"select",
+			"fk_userid":getCookie("userid"),
+			"fk_anli_id":getCookie("anli_id")
 		},
 		async:false,
 		dataType:"json",
@@ -33,32 +36,13 @@ $(document).ready(function (){
 			$("#one_jhsj").val(data.jihua_shijian);
 			$("#one_jhnr").val(data.jihua_neirong);
 			$("#one_jhbz").val(data.jihua_beizhu);
+			$("#saveAndStep").css("display","none");
 			//缓存cookie --- id 值以后点击就是修改操作
 			SetCookie("jihua_id",data.jihua_id);
 		},
 		error:function(){
 			window.location.href="error.html";
 		}
-	});
-	
-	//初始化插件
-	KindEditor.ready(function(K) {
-		var editor1 = K.create('textarea[name="content1"]', {
-			cssPath: 'kindeditor-v4.1.7/kindeditor-4.1.7/plugins/code/prettify.css',
-			resizeType:0,
-			allowFileManager: true,
-			afterCreate: function() {
-				var self = this;
-				K.ctrl(document, 13, function() {
-					self.sync();
-					document.forms['example'].submit();
-				});
-				K.ctrl(self.edit.doc, 13, function() {
-					self.sync();
-					document.forms['example'].submit();
-				});
-			}
-		});
 	});
 	
 	//初始化日历控件
@@ -121,10 +105,8 @@ $(document).ready(function (){
 			}
 			var startDay=moment(event.start).format('YYYY-MM-DD');
 			var endDay = moment(event.end).format('YYYY-MM-DD');
-			
 			var startTime= moment(event.start).format('HH:mm:ss');
 			var endTime= moment(event.end).format('HH:mm:ss');
-			
 			$('#rcTitle1').val(event.title);
 			$("#startDay1").val(startDay);
 			$("#endDay1").val(endDay);
@@ -194,6 +176,9 @@ $(document).ready(function (){
 	});
 });
 
+
+
+
 //定义ajax 
 var option={
 	url:"JiHuaCtrl/jiHuaCtrl",
@@ -208,12 +193,13 @@ var option={
         alert(textStatus);
     }
 };
+
 //填提交表单必要的参数
 function insertParaForm(){
 	$("#jihua_moxing").val($("#one_jhmx").val());
 	$("#jihua_shijian").val($("#one_jhsj").val());
 	$("#jihua_neirong").val($("#one_jhnr").val());
-	$("#jihua_beizhu").val($("#jihua_beizhu").val());
+	$("#jihua_beizhu").val($("#one_jhbz").val());
 }
 
 //添加
@@ -224,6 +210,7 @@ function add(){
 
 //修改
 function update(){
+	$("#jihua_id").val(getCookie("jihua_id"));
 	$("#method").val("update");
 	insertParaForm();
 	option.data=$("#paraForm").serialize();
@@ -235,7 +222,6 @@ $("#save").click(function (){
 		alert(result.message);
 		SetCookie("jihua_id",result.jihua_id);
 	};
-	alert(getCookie("jihua_id"));
 	if(getCookie("jihua_id")!=null){
 		$("#state").val(getCookie("state"));
 		update();
@@ -246,20 +232,25 @@ $("#save").click(function (){
 	$.ajax(option);
 });
 
+//点击提交跳转
 $("#saveAndStep").click(function (){
 	$("#state").val(5);
 	option.success=function(result){
 		alert(result.message);
+		SetCookie("state", 5);
+		window.parent.contentTop.location.href="biaoti.html";
 		window.location.href="shishichuzhi.html";
+		
 	};
 	if(getCookie("jihua_id")!=null){
 		update();
 	}else{
 		add();
 	}
-	window.location.href="shishichuzhi.html";
 	$.ajax(option);
 });
+
+
 
 //监听页面离开时间
 $(window).bind('beforeunload',function(){ 

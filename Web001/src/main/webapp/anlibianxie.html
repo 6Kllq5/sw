@@ -5,9 +5,9 @@
 		<link rel="stylesheet" type="text/css" href="css/reset.css" />
 		<link rel="stylesheet" type="text/css" href="css/anlibianxie.css" />
 		<script src="js/liebiao.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/jquery.js"></script>
-		<script src="js/cookie.js"></script>
-		<title></title>
+		<script src="js/jquery.js" type="text/javascript"  charset="utf-8"></script>
+		<script src="js/cookie.js" type="text/javascript"  charset="utf-8"></script>
+		<title>案例编写</title>
 	</head>
 	<body>
 		<div class="anlibianxie">
@@ -223,7 +223,7 @@
 		    	<input type="checkbox" name="chooseFs" style="margin-left: -70px;" value="求助其他机构" id="qiuzhu"/><label for="qiuzhu">求助其他机构</label>
 		    	<input type="text" id="one_qiuzhu_jigou"  placeholder="请输入机构名称" disabled="disabled" style="border:1px solid lightskyblue;margin-left: 5px;margin-top: 20px;height: 20px;width: 40%">
 		    	<br><br>
-		    	<input type="checkbox" id="one_zhuanjie_jigou" name="chooseFs" style="margin-left: 12px;" value="转介" id="zhuanjie" />
+		    	<input type="checkbox" id="zhuanjie" name="chooseFs" style="margin-left: 12px;" value="转介" id="zhuanjie" />
 		    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		    	<label for="zhuanjie">转介</label>
 		    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -264,8 +264,8 @@
 		</div>
 		
 		<!-- 隐含域 -->
-		<form style="display: none;" id="paramForm">
-			<input name="anli_id" id="anli_id"><!-- bu -->
+		<form style="display: none;" id="paraForm">
+			<input name="anli_id" id="anli_id"><!-- 用于更新是存放数据 -->
 			<input name="anli_no" id="anli_no"/>
 			<input name="anli_name" id="anli_name">
 			<input name="anli_date" id="anli_date"/>

@@ -50,6 +50,11 @@ public class PingGuCtrl implements CtrlFun{
 		Map temp=new HashMap();
 		try {
 			temp=pingGuService.executSelectOne_S(paraMap);
+			if(temp==null){
+				resultMap.put("data", null);
+				resultMap.put("statu", 0);
+				resultMap.put("message", "查询失败");
+			}
 			if(temp.size()>0){
 				resultMap.put("data", temp);
 				resultMap.put("statu", 1);
@@ -73,7 +78,6 @@ public class PingGuCtrl implements CtrlFun{
 		int resultInt=0;
 		try {
 			resultInt=pingGuService.executUpdateOne_S(paraMap);
-			
 			if(resultInt==0){
 				resultMap.put("statu", 0);
 				resultMap.put("message", "更新失败");
@@ -97,10 +101,11 @@ public class PingGuCtrl implements CtrlFun{
 			resultInt=pingGuService.executAddOne_S(paraMap);
 			if(resultInt==0){
 				resultMap.put("statu", 0);
-				resultMap.put("message", "更新失败");
+				resultMap.put("message", "添加失败");
 			}else{
 				resultMap.put("statu", 1);
-				resultMap.put("message", "更新成功");
+				resultMap.put("message", "添加成功");
+				resultMap.put("pinggu_id", paraMap.get("pinggu_id"));
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -150,8 +150,8 @@
 			<if test="fk_userid !=null and fk_userid !=''">
 				and fk_userid = #{fk_userid}
 			</if>
-			<if test="anli_id !=null and anli_id !='' ">
-				and anli_id=#{anli_id}
+			<if test="fk_anli_id !=null and fk_anli_id !='' ">
+				and anli_id=#{fk_anli_id}
 			</if>
 			
 		</where>
@@ -194,11 +194,11 @@
 			fk_username
 		from anli_t
 		<where>
-			<if test="fk_userid !=null and fk_userid !=''">
+			<if test="fk_userid !=null">
 				and fk_userid=#{fk_userid}	
 			</if>
 			
-			<if test="anli_id!=null and anli_id !=''">
+			<if test="anli_id!=null">
 				and anli_id=#{anli_id}	
 			</if>
 		</where>
@@ -552,10 +552,10 @@
 	
 	<insert id="insert_fenXiResult" parameterType="java.util.Map">
 		insert into zhenduan_t(
-			zhenduan_t,
+			zhenduan_id,
 			linchuang_pinggu,
 			diaocha_wenjuan,
-			goutong_moshi
+			goutong_moshi,
 			jiating_tupian_lianjie,
 			shengtai_tupian_lianjie,
 			shehui_tupian_lianjie,
@@ -564,7 +564,7 @@
 			fk_anli_id
 		)
 		values(
-			#{zhenduan_t},
+			#{zhenduan_id},
 			#{linchuang_pinggu},
 			#{diaocha_wenjuan},
 			#{goutong_moshi},
@@ -577,7 +577,7 @@
 		)
 	</insert>
 	
-	<update id="update_fenXiResult">
+	<update id="update_fenXiResult" parameterType="java.util.Map">
 		update zhenduan_t set
 			linchuang_pinggu=#{linchuang_pinggu},
 			diaocha_wenjuan=#{diaocha_wenjuan},

@@ -7,7 +7,7 @@ var option={
 	success:function (result){
 		$(".biaoge tr:gt(0)").remove();//移除所有的相关的元素节点
 		var data=result.data;
-		for (i=0;i<data.length;i++){
+		for ( i = 0;i<data.length;i++){
 			$(".biaoge").append(
 				'<tr onclick="lookDetil('+"'"+ data[i].anli_id+"'"+','+data[i].state+')">'
 					+'<th style="background: url(img/line.gif); background-repeat: no-repeat;background-position: right;">'+(i+1)+'</th>'
@@ -27,7 +27,6 @@ var option={
 		alert("error");
 	}
 };
-
 
 $(function(){
 	//判断角色权限
@@ -64,6 +63,7 @@ $(document).ready(function (){
 	updateFenYe();
 });
 
+
 $("#next").click(function(){
 	if((+getCookie("pageCount")==0)){
 		alert("已经是最后一页");
@@ -82,6 +82,8 @@ $("#next").click(function(){
 	updateFenYe();
 });
 
+
+
 $("#back").click(function (){
 	var rowInOnePage=(+$("#rowInOnePage").val());
 	var pageNum=getPageNumByOffset(+$("#offset").val(),rowInOnePage);//获取数据
@@ -95,18 +97,19 @@ $("#back").click(function (){
 	updateFenYe();
 });
 
+
+
 //查询状态改变出发
 $(".chaxun form select").change(function (){
 	var state = $(this).find("option:selected").val();
 	var stateArr= state.split('');
-	
 	$("#minstate").val(stateArr[0]);
 	$("#maxstate").val(stateArr[1]);
-	
 	option.data=$("#paraForm").serialize();
 	$.ajax(option);
 	updateFenYe();
 });
+
 
 //点击搜索根据搜索条件进行所搜
 $(".cx-button").click(function(){
@@ -117,6 +120,7 @@ $(".cx-button").click(function(){
 	$.ajax(option);
 	updateFenYe();
 });
+
 
 //更新页表下的分页
 function updateFenYe(){
@@ -139,16 +143,12 @@ function getPageNumByOffset(offset,rowInOnePage){
 	return parseInt(offset/rowInOnePage)+1;
 }
 
-
-
 //点击某一个tr查看具体的，情况
 function lookDetil(anli_id,state){
 	SetCookie("anli_id",anli_id);
 	SetCookie("state",state);
 	window.parent.rightFrame.location="right3.html";
 }
-
-
 
 //假删除某一个案例
 function del(event,anli_id){
@@ -167,11 +167,21 @@ function del(event,anli_id){
 			alert(result.message);
 		},
 		error:function (){
-			window.location.href="error.html"
+			window.location.href="error.html";
 		}
 	});
 	//重新初始页面数据
 	$.ajax(option);
 	updateFenYe();
 }
+
+
+
+//点击跳转编写页面
+$("#goEdit").click(function (){
+	//进入添加页面前删除一些cookie 缓存数据
+	delCookie("state");
+	delCookie("anli_id");
+	window.location.href="right3.html";
+});
 

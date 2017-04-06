@@ -13,7 +13,7 @@ function getRealPath(){
 var option={
 	url:"JiHuaCtrl/jiHuaCtrl",
 	type:"post",
-	data:$("#paramForm").serialize(),
+	data:$("#paraForm").serialize(),
 	async:false,
 	success:function (){
 	},
@@ -22,35 +22,6 @@ var option={
 	}
 };
 
-
-//添加
-function add(){
-	insertForm();
-	option.success=function(result){
-		alert(result.message);
-		window.location.href="right2.html";
-	};
-}
-
-//修改
-function update(){
-	$("#method").val("update");//修改方法
-	insertForm();
-	$("#pinggu_id").val(getCookie("pinggu_id"));
-	option.data=$("#paramForm").serialize();
-	option.success=function(result){
-		alert(result.message);
-	};
-}
-
-//填充数据
-function insertForm(){
-	$("#daoda_mubiao").val($("#mb_content").val());//达到目标
-	$("#fangshi_dedang").val($("#gzfs_content").val());//工作方式
-	$("#pingding_dengji").val($("input[name='pddj']:checked").val());
-	$("#gengjing_fuwu").val($("input[name='gjfw']:checked").val());
-	$("#chengxiao_jielun").val($("#cxjl").val());
-}
 
 $(document).ready(function(){
 	//填充必须的数据
@@ -71,6 +42,7 @@ $(document).ready(function(){
 			if(data==null){
 				return;
 			}
+			alert("gg")
 			//添加  页面  数据
 			if(data.daoda_mubiao!=''&&data.daoda_mubiao!=null){
 				$(".zuo1").eq(0).find("input").eq(1).attr("checked","checked");
@@ -91,6 +63,36 @@ $(document).ready(function(){
 		}
 	});
 });
+
+//添加
+function add(){
+	insertForm();
+	option.success=function(result){
+		alert(result.message);
+		window.location.href="right2.html";
+	};
+	option.data=$("#paraForm").serialize();
+}
+
+//修改
+function update(){
+	$("#method").val("update");//修改方法
+	insertForm();
+	$("#pinggu_id").val(getCookie("pinggu_id"));
+	option.data=$("#paraForm").serialize();
+	option.success=function(result){
+		alert(result.message);
+	};
+}
+
+//填充数据
+function insertForm(){
+	$("#daoda_mubiao").val($("#mb_content").val());//达到目标
+	$("#fangshi_dedang").val($("#gzfs_content").val());//工作方式
+	$("#pingding_dengji").val($("input[name='pddj']:checked").val());
+	$("#gengjing_fuwu").val($("input[name='gjfw']:checked").val());
+	$("#chengxiao_jielun").val($("#cxjl").val());
+}
 
 //点击保存并且跳转
 $("#save").click(function(){

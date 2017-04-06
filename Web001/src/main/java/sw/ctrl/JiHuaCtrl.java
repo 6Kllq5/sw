@@ -52,7 +52,13 @@ public class JiHuaCtrl implements CtrlFun{
 		try {
 			tempMap=jiHuaService.executSelectOne_S(paraMap);
 			
-			if(tempMap.size()>0){
+			if(tempMap==null){
+				resultMap.put("data",null);
+				resultMap.put("statu", 0);
+				resultMap.put("message", "查询失败");
+				return resultMap;
+			}
+			if(tempMap==null||tempMap.size()>0){
 				resultMap.put("data",tempMap);
 				resultMap.put("statu", 1);
 				resultMap.put("message", "查询成功");
