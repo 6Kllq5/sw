@@ -65,6 +65,9 @@ function getRealPath(){
 //填充提交数据表单
 function insertParaForm(){
 	
+	
+	
+	
 }
 
 //添加
@@ -202,7 +205,7 @@ $("#save").click(function (){
 			alert(result.message);
 			SetCookie("zhenduan_id",result.zhenduan_id);
 		};
-		$("#state").val(getCookie(3));
+		$("#state").val(3);
 		add();
 	}
 	option.data=$("#paraForm").serialize();

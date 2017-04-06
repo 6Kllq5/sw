@@ -70,7 +70,7 @@ public class UserCtrl {
 		Map tempMap=new HashMap();
 		try {
 			tempMap=userService.login(paraMap);
-			if(tempMap.size()==0){
+			if(tempMap==null||tempMap.size()==0){
 				resultMap.put("statu", 0);
 				resultMap.put("message","登录失败");
 			}else{

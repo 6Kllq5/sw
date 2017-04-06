@@ -40,7 +40,9 @@ $("#loginBtn").click(function (){
 		},
 		success:function (result){
 			if(result.statu==0){
+				alert("faild");
 				alert(result.message);
+				return;
 			}else{
 				SetCookie("username",loginname);
 				SetCookie("role",result.user.role);

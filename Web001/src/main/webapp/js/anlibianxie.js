@@ -43,26 +43,16 @@ function getRealPath(){
 
 //添加一个案例
 function add(){
-	if($("#state").val()=='8'){
-		$("#state").val(8);
-	}else{
-		$("#state").val(1);
-	}
+	
 	insertParaForm();
-	option.data=$("#paraForm").serialize();
+	
 }
 
 //修改一个案例
 function update(){
 	$("#anli_id").val(getCookie("anli_id"));
-	if($("#state").val()=='8'){
-		$("#state").val(8);
-	}else{
-		$("#state").val(getCookie("state"));
-	}
 	$("#method").val("update");
 	insertParaForm();
-	option.data=$("#paraForm").serialize();
 }
 
 
@@ -179,6 +169,11 @@ $("#zhuanjie").click(function (){
 //点击保存按钮
 $("#save_btn").click(function (){
 	if(getCookie("anli_id")==null){
+		if($("#state").val()=='8'){
+			$("#state").val(8);
+		}else{
+			$("#state").val(1);
+		}
 		option.success=function(result){
 			alert(result.message);
 			SetCookie("anli_id", result.anli_id);
@@ -186,17 +181,24 @@ $("#save_btn").click(function (){
 		};
 		add();
 	}else{
+		if($("#state").val()=='8'){
+			$("#state").val(8);
+		}else{
+			$("#state").val(getCookie("state"));
+		}
 		$("#anli_id").val(getCookie("anli_id"));
 		option.success=function(result){
 			alert(result.message);
 		};
 		update();
 	}
+	option.data=$("#paraForm").serialize();
 	$.ajax(option);
 });
 
 //点击并且跳转
 $("#saveAndStep_btn").click(function (){
+	$("#state").val(2);
 	if(getCookie("anli_id")==null){
 		option.success=function(result){
 			alert(result.message);
@@ -209,10 +211,19 @@ $("#saveAndStep_btn").click(function (){
 	}else{
 		$("#anli_id").val(getCookie("anli_id"));
 		option.success=function(result){
-			alert(result.message);
+			
+			if(result.statu==1){
+				alert(result.message);
+				window.parent.contentTop.location.href="biaoti.html";
+				SetCookie("state", 2);
+				window.location.href="soujiziliao.html";
+			}else{
+				alert(result.message);
+			}
+			
 		};
 		update();
-		window.location.href="soujiziliao.html";
 	}
+	option.data=$("#paraForm").serialize();
 	$.ajax(option);
 });

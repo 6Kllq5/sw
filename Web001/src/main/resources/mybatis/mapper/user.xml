@@ -226,6 +226,9 @@
 			<if test="anli_id != null and anli_id !='' ">
 				and anli_id = #{anli_id}
 			</if>
+			<if test="fk_userid !=null and fk_userid !='' ">
+				and fk_userid=#{fk_userid}	
+			</if>
 		</where>
 	</update>
 	<!-- end -->
